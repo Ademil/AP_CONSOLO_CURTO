@@ -1,571 +1,1387 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ademilton Pavan | </title>
-    <!-- Google Fonts: Montserrat -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        premiumGold: '#D4AF37',
-                    },
-                    fontFamily: {
-                        montserrat: ['Montserrat', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.4s ease-out forwards',
-                        'slide-up': 'slideUp 0.6s ease-out forwards',
-                        'pulse-soft': 'pulseSoft 2s infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        pulseSoft: {
-                            '0%, 100%': { opacity: '1' },
-                            '50%': { opacity: '0.7' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-        }
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .bg-main {
-            background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
+<meta name="theme-color" content="#0a1a3a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="APavan Consolo">
+<title>APavan Consolo — NBR 6118:2023</title>
+<!-- Logo em arquivo local (mesma pasta) -->
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+<link rel="apple-touch-icon" sizes="152x152" href="logo.png">
+<link rel="apple-touch-icon" sizes="120x120" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="shortcut icon" href="logo.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#eef1f5;color:#1a2332;font-size:14px;line-height:1.45}
+:root{--azul:#0d2b4e;--azul2:#1a4a7f;--azul3:#2d6fba;--cinza:#5a6b7f;--cinza2:#8896a8;--borda:#d0d8e0;--ok:#1e8b48;--atencao:#d68b00;--nok:#c22f2f;--sombra:0 2px 6px rgba(13,43,78,.08)}
+body{padding:0;min-height:100vh;padding-bottom:80px}
+header.top{background:linear-gradient(135deg,#0a1a3a 0%,#0d2b4e 50%,#1a4a7f 100%);color:#fff;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.25);position:sticky;top:0;z-index:100}
+.header-wrap{display:flex;align-items:center;gap:14px;max-width:1400px;margin:0 auto}
+.logo-img{width:56px;height:56px;flex-shrink:0;background:#fff;border-radius:10px;padding:3px;filter:drop-shadow(0 2px 6px rgba(74,158,255,.4));display:flex;align-items:center;justify-content:center;overflow:hidden}
+.logo-img img{width:100%;height:100%;object-fit:contain;display:block}
+.logo-fallback{font-weight:800;color:#0d2b4e;font-size:26px;line-height:1}
+.logo-txt{flex:1;min-width:0}
+.logo-txt .emp{font-size:11px;letter-spacing:2px;opacity:.9;font-weight:600;color:#9fc9f0}
+.logo-txt .app{font-size:17px;font-weight:700;letter-spacing:.5px}
+.logo-txt .sub{font-size:10px;opacity:.75;margin-top:2px}
+nav.tabs{background:#fff;border-bottom:1px solid var(--borda);overflow-x:auto;position:sticky;top:84px;z-index:99}
+nav.tabs ul{display:flex;list-style:none;max-width:1400px;margin:0 auto;padding:0 8px}
+nav.tabs li{white-space:nowrap}
+nav.tabs button{background:transparent;border:none;padding:11px 14px;font-size:12.5px;font-weight:600;color:var(--cinza);cursor:pointer;border-bottom:3px solid transparent;font-family:inherit}
+nav.tabs button.active{color:var(--azul);border-bottom-color:var(--azul3)}
+main{max-width:1400px;margin:0 auto;padding:14px}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.card{background:#fff;border-radius:10px;padding:16px;margin-bottom:14px;box-shadow:var(--sombra);border:1px solid var(--borda)}
+.card h2{font-size:14px;color:var(--azul);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--azul3);text-transform:uppercase;letter-spacing:.8px;font-weight:700}
+.card h3{font-size:12.5px;color:var(--azul2);margin:12px 0 8px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+label{display:block;font-size:11px;font-weight:600;color:var(--cinza);margin-bottom:3px}
+input,select{width:100%;padding:8px 10px;border:1.5px solid var(--borda);border-radius:6px;font-size:13px;font-family:inherit;background:#fafbfc;color:#1a2332}
+input:focus,select:focus{outline:none;border-color:var(--azul3);background:#fff}
+button.btn{background:var(--azul);color:#fff;border:none;padding:10px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+button.btn:hover{background:var(--azul2)}
+button.btn.sec{background:#fff;color:var(--azul);border:1.5px solid var(--azul)}
+button.btn.ok{background:var(--ok)}button.btn.danger{background:var(--nok)}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.fixed-calc{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--azul3);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;justify-content:center;z-index:200}
+.fixed-calc button{padding:12px 24px;font-size:14px;font-weight:700;flex:1;max-width:300px}
+table.res{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}
+table.res th{background:#eef3fa;color:var(--azul);padding:8px 6px;text-align:left;font-weight:700;border-bottom:2px solid var(--borda);font-size:11.5px;text-transform:uppercase}
+table.res td{padding:7px 6px;border-bottom:1px solid #ecf0f4}
+table.res td.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.pill.ok{background:#d9f0e1;color:#0d5d2d}
+.pill.at{background:#fcecd0;color:#7a4f00}
+.pill.nok{background:#f8d7d7;color:#8b1a1a}
+.alert{padding:10px 12px;border-radius:6px;font-size:12.5px;margin:8px 0;border-left:4px solid;display:flex;gap:8px}
+.alert.info{background:#e6eff9;border-color:#2d6fba;color:#0f3a68}
+.alert.warn{background:#fdf3dc;border-color:#d68b00;color:#6e4a00}
+.alert.err{background:#f9e2e2;border-color:#c22f2f;color:#7a1a1a}
+.alert.ok{background:#e2f4ea;border-color:#1e8b48;color:#0d5d2d}
+.alert .ic{font-weight:800;font-size:15px;flex-shrink:0}
+.metric{background:#f7fafd;border:1px solid var(--borda);border-radius:8px;padding:10px 12px}
+.metric .lbl{font-size:10.5px;color:var(--cinza);text-transform:uppercase;font-weight:700}
+.metric .val{font-size:17px;font-weight:700;color:var(--azul);margin-top:2px}
+.bar{background:#e6ebf1;height:8px;border-radius:4px;overflow:hidden;margin-top:4px}
+.bar>div{height:100%;border-radius:4px}
+.bar.ok>div{background:linear-gradient(90deg,#1e8b48,#2bb567)}
+.bar.at>div{background:linear-gradient(90deg,#d68b00,#f0a92a)}
+.bar.nok>div{background:linear-gradient(90deg,#c22f2f,#e04d4d)}
+canvas{max-width:100%;display:block;background:#fff;border:1px solid var(--borda);border-radius:6px;margin-top:8px}
+.svg-wrap{overflow:auto;background:#fafbfc;border:1px solid var(--borda);border-radius:6px;padding:8px;margin-top:8px}
+.svg-wrap svg{display:block;margin:0 auto}
+.chk-row{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}
+.chk{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--cinza);cursor:pointer;padding:4px 8px;background:#f4f7fa;border-radius:6px}
+.chk input{width:auto;accent-color:var(--azul3)}
+.formula{font-family:"SF Mono",Consolas,monospace;font-size:12px;background:#0d2b4e;color:#e6eff9;padding:8px 10px;border-radius:5px;margin:6px 0;overflow-x:auto;white-space:pre-wrap;line-height:1.6}
+.formula .res{color:#7ee0a1;font-weight:700}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.two-col{grid-template-columns:1fr}}
+.cards-dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.dash-card{background:linear-gradient(135deg,#f7fafd,#eef3fa);border:1px solid var(--borda);border-left:4px solid var(--azul3);border-radius:8px;padding:12px}
+.dash-card .k{font-size:10.5px;color:var(--cinza);text-transform:uppercase;font-weight:700}
+.dash-card .v{font-size:16px;font-weight:700;color:var(--azul);margin-top:3px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;font-size:11px;color:var(--cinza)}
+.legend span{display:flex;align-items:center;gap:5px}
+.legend i{display:inline-block;width:14px;height:8px;border-radius:2px}
+.memo h3{margin-top:16px;color:var(--azul);border-bottom:1px solid var(--borda);padding-bottom:4px}
+.foot-note{font-size:10.5px;color:var(--cinza2);text-align:center;padding:14px 8px}
+.section-title{font-size:11px;color:var(--azul3);font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin:14px 0 6px}
+.sep{height:1px;background:var(--borda);margin:10px 0}
+@media print{header.top,nav.tabs,.fixed-calc,.no-print{display:none!important}body{background:#fff;padding:0}.card{box-shadow:none;border:1px solid #ccc}.tab-panel{display:block!important}}
+.load-row{background:#f9fbfd;border:1px solid var(--borda);border-radius:8px;padding:10px;margin-bottom:10px}
+.load-row .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.load-row .hd .lbl{font-weight:700;color:var(--azul);font-size:12px}
+.load-row .rm{background:#c22f2f;color:#fff;border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:14px}
+.logo-preview{background:linear-gradient(135deg,#0a1a3a,#0d2b4e 60%,#1a4a7f);padding:24px;border-radius:12px;display:flex;justify-content:center;align-items:center;margin:8px 0}
+.logo-preview img{max-width:220px;max-height:220px;border-radius:12px;box-shadow:0 8px 24px rgba(74,158,255,.4)}
+</style>
+</head>
+<body>
 
-        /* Estilo para inputs no formulário */
-        input, select, textarea {
-            background: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            color: white !important;
-        }
-        input:focus {
-            border-color: #D4AF37 !important;
-            outline: none;
-        }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+<header class="top">
+  <div class="header-wrap">
+    <div class="logo-img" id="headerLogo"></div>
+    <div class="logo-txt">
+      <div class="emp">APAVAN ENGENHARIA E CONSULTORIA</div>
+      <div class="app">APavan Consolo</div>
+      <div class="sub">CONSOLO DE CONCRETO ARMADO · NBR 6118:2023 · Seção 22.5</div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <ul id="tabsList">
+    <li><button data-tab="projeto" class="active">① Projeto</button></li>
+    <li><button data-tab="geometria">② Geometria</button></li>
+    <li><button data-tab="cargas">③ Cargas</button></li>
+    <li><button data-tab="materiais">④ Materiais</button></li>
+    <li><button data-tab="modelo">⑤ Modelo</button></li>
+    <li><button data-tab="elu">⑥ ELU</button></li>
+    <li><button data-tab="atrito">⑦ Atrito-Cis.</button></li>
+    <li><button data-tab="els">⑧ ELS</button></li>
+    <li><button data-tab="armaduras">⑨ Armaduras</button></li>
+    <li><button data-tab="ancoragem">⑩ Ancoragem</button></li>
+    <li><button data-tab="graficos">⑪ Gráficos</button></li>
+    <li><button data-tab="detalhe">⑫ Detalhamento</button></li>
+    <li><button data-tab="quant">⑬ Quantitativos</button></li>
+    <li><button data-tab="memoria">⑭ Memória</button></li>
+    <li><button data-tab="comparacao">🔬 Comparação</button></li>
+    <li><button data-tab="valid">⚙ Validação</button></li>
+  </ul>
+</nav>
+
+<main>
+
+<section class="tab-panel active" id="tab-projeto">
+  <div class="card">
+    <h2>Dados do Projeto</h2>
+    <div class="grid">
+      <div><label>Nome</label><input id="p_nome" value="Consolo C1 — Galpão Industrial"></div>
+      <div><label>Responsável</label><input id="p_resp" value="Eng. APavan"></div>
+      <div><label>Local</label><input id="p_local" value="Tubarão — SC"></div>
+      <div><label>Data</label><input id="p_data" type="date"></div>
+      <div><label>Nº / ART</label><input id="p_num"></div>
+    </div>
+    <div class="sep"></div>
+    <div class="btn-row">
+      <button class="btn sec" onclick="AP.Project.newProject()">Novo</button>
+      <button class="btn" onclick="AP.Project.save()">Salvar</button>
+      <button class="btn sec" onclick="AP.Project.openList()">Abrir</button>
+      <button class="btn danger" onclick="AP.Project.remove()">Excluir</button>
+      <button class="btn sec" onclick="AP.Project.exportJSON()">Exportar JSON</button>
+      <button class="btn sec" onclick="AP.Project.importJSON()">Importar JSON</button>
+    </div>
+    <div id="projectList" style="margin-top:12px"></div>
+  </div>
+  <div class="card">
+    <h2>Identidade Visual</h2>
+    <div class="logo-preview" id="logoPreview"></div>
+    <div class="alert info"><span class="ic">i</span><div>
+      <b>Logo:</b> arquivo <code>logo.png</code> na mesma pasta do <code>index.html</code>.<br>
+      <b>iPhone:</b> Safari → Compartilhar → Adicionar à Tela de Início.
+    </div></div>
+  </div>
+  <div class="card">
+    <h2>Referência Normativa</h2>
+    <div class="alert info"><span class="ic">i</span><div><b>ABNT NBR 6118:2023</b> — Seção 22.5 (bielas-tirantes) e atrito-cisalhamento (shear-friction) para a/d ≤ 0,5.</div></div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-geometria">
+  <div class="card">
+    <h2>Geometria</h2>
+    <div class="grid">
+      <div><label>b [cm]</label><input id="g_b" type="number" step="0.5" value="30"></div>
+      <div><label>h [cm]</label><input id="g_h" type="number" step="0.5" value="55"></div>
+      <div><label>L [cm]</label><input id="g_L" type="number" step="0.5" value="30"></div>
+      <div><label>a [cm]</label><input id="g_a" type="number" step="0.5" value="15"></div>
+      <div><label>d [cm]</label><input id="g_d" type="number" step="0.5" value="50"></div>
+      <div><label>c<sub>nom</sub> [cm]</label><input id="g_cnom" type="number" step="0.5" value="2.5"></div>
+      <div><label>Ø tir. [mm]</label><input id="g_phi" type="number" step="0.5" value="16"></div>
+    </div>
+    <div class="section-title">Pilar</div>
+    <div class="grid">
+      <div><label>b<sub>p</sub> [cm]</label><input id="g_bp" type="number" value="40"></div>
+      <div><label>h<sub>p</sub> [cm]</label><input id="g_hp" type="number" value="40"></div>
+    </div>
+    <div class="section-title">Tipologia</div>
+    <div class="grid">
+      <div><label>Tipo</label><select id="g_tipo"><option value="externo">Externo</option><option value="interno">Interno</option><option value="premoldado">Pré-moldado</option></select></div>
+      <div><label>Forma</label><select id="g_forma"><option value="retangular">Retangular</option><option value="trapezoidal">Trapezoidal</option></select></div>
+      <div><label>CAA</label><select id="g_caa"><option value="I">I</option><option value="II" selected>II</option><option value="III">III</option><option value="IV">IV</option></select></div>
+    </div>
+    <div class="svg-wrap" id="geomSvgWrap"></div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-cargas">
+  <div class="card">
+    <h2>Ações</h2>
+    <div id="loadsContainer"></div>
+    <div class="btn-row">
+      <button class="btn ok" onclick="AP.Loads.addLoad()">+ ADICIONAR CARGA</button>
+      <button class="btn sec" onclick="AP.Loads.calcSelfWeight()">Peso Próprio</button>
+    </div>
+    <div class="section-title">Aparelho de Apoio</div>
+    <div class="grid">
+      <div><label>Tipo</label><select id="ap_tipo"><option value="neoprene" selected>Neoprene</option><option value="metalica">Metálica</option><option value="nenhum">Nenhum</option></select></div>
+      <div><label>Largura [cm]</label><input id="ap_l" type="number" value="20"></div>
+      <div><label>Compr. [cm]</label><input id="ap_c" type="number" value="15"></div>
+    </div>
+    <div class="section-title">Coeficientes</div>
+    <div class="grid">
+      <div><label>γ<sub>g</sub></label><input id="c_gg" type="number" step="0.05" value="1.4"></div>
+      <div><label>γ<sub>q</sub></label><input id="c_gq" type="number" step="0.05" value="1.4"></div>
+      <div><label>γ<sub>c</sub></label><input id="c_gc" type="number" step="0.05" value="1.4"></div>
+      <div><label>γ<sub>s</sub></label><input id="c_gs" type="number" step="0.05" value="1.15"></div>
+      <div><label>ψ<sub>0</sub></label><input id="c_p0" type="number" step="0.05" value="0.7"></div>
+      <div><label>ψ<sub>1</sub></label><input id="c_p1" type="number" step="0.05" value="0.6"></div>
+      <div><label>ψ<sub>2</sub></label><input id="c_p2" type="number" step="0.05" value="0.4"></div>
+    </div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-materiais">
+  <div class="card">
+    <h2>Concreto</h2>
+    <div class="grid">
+      <div><label>Classe</label><select id="m_classe"><option>C20</option><option>C25</option><option selected>C30</option><option>C35</option><option>C40</option><option>C50</option><option>C60</option><option value="manual">Manual</option></select></div>
+      <div><label>f<sub>ck</sub> [MPa]</label><input id="m_fck" type="number" value="30"></div>
+      <div><label>α<sub>E</sub></label><select id="m_alphaE"><option value="1.2">1.2 Basalto</option><option value="1.0" selected>1.0 Granito</option><option value="0.9">0.9 Calcário</option></select></div>
+    </div>
+    <table class="res" id="matConcTable"></table>
+  </div>
+  <div class="card">
+    <h2>Aço</h2>
+    <div class="grid">
+      <div><label>Categoria</label><select id="m_aco"><option value="CA-50" selected>CA-50</option><option value="CA-60">CA-60</option></select></div>
+      <div><label>f<sub>yk</sub> [MPa]</label><input id="m_fyk" type="number" value="500"></div>
+      <div><label>E<sub>s</sub> [GPa]</label><input id="m_Es" type="number" value="210"></div>
+    </div>
+    <table class="res" id="matAcoTable"></table>
+    <canvas id="acoChart" width="700" height="260"></canvas>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-modelo">
+  <div class="card">
+    <h2>Classificação e Modelo</h2>
+    <div id="classifResult"></div>
+    <div class="sep"></div>
+    <h3>Modelo Biela-Tirante</h3>
+    <div class="svg-wrap" id="btSvgWrap"></div>
+    <div class="chk-row" id="btToggles">
+      <label class="chk"><input type="checkbox" data-tg="cargas" checked> Cargas</label>
+      <label class="chk"><input type="checkbox" data-tg="biela" checked> Biela</label>
+      <label class="chk"><input type="checkbox" data-tg="tirante" checked> Tirante</label>
+      <label class="chk"><input type="checkbox" data-tg="arm" checked> Armaduras</label>
+      <label class="chk"><input type="checkbox" data-tg="cotas" checked> Cotas</label>
+      <label class="chk"><input type="checkbox" data-tg="nos" checked> Nós</label>
+    </div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-elu">
+  <div class="card"><h2>Resumo ELU</h2><div id="eluResumo"></div></div>
+  <div class="card"><h2>Bielas e Nós</h2><div id="eluNos"></div></div>
+  <div class="card"><h2>Tirante</h2><div id="eluTirante"></div></div>
+  <div class="card"><h2>Cisalhamento</h2><div id="eluCisalha"></div></div>
+  <div class="card"><h2>Flexão Complementar</h2><div id="eluFlexao"></div></div>
+  <div class="card"><h2>Contato</h2><div id="eluContato"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-atrito">
+  <div class="card">
+    <h2>Modelo Atrito-Cisalhamento (Shear-Friction)</h2>
+    <div id="atritoContent"></div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-els">
+  <div class="card"><h2>ELS</h2><div id="elsResumo"></div></div>
+  <div class="card"><h2>Deslocamento</h2><div id="elsFlecha"></div><canvas id="chartFlecha" width="700" height="240"></canvas></div>
+  <div class="card"><h2>Fissuração</h2><div id="elsFissura"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-armaduras">
+  <div class="card"><h2>Tirante</h2><div id="armTir"></div></div>
+  <div class="card"><h2>Costura</h2><div id="armCost"></div></div>
+  <div class="card"><h2>Suspensão</h2><div id="armSusp"></div></div>
+  <div class="card"><h2>Otimização</h2><button class="btn" onclick="AP.Recalc.optimize()">OTIMIZAR</button><div id="optResult" style="margin-top:12px"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-ancoragem">
+  <div class="card"><h2>Ancoragem do Tirante</h2><div id="ancRes"></div></div>
+  <div class="card"><h2>Ancoragem da Costura</h2><div id="ancCost"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-graficos">
+  <div class="two-col">
+    <div class="card"><h2>M(x)</h2><canvas id="chartM" width="700" height="260"></canvas><div id="mInfo" style="font-size:12px;margin-top:6px;color:var(--cinza)"></div></div>
+    <div class="card"><h2>V(x)</h2><canvas id="chartV" width="700" height="260"></canvas><div id="vInfo" style="font-size:12px;margin-top:6px;color:var(--cinza)"></div></div>
+    <div class="card"><h2>Taxas η</h2><canvas id="chartEta" width="700" height="260"></canvas></div>
+    <div class="card"><h2>δ(x)</h2><canvas id="chartDelta" width="700" height="260"></canvas></div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-detalhe">
+  <div class="card">
+    <h2>Detalhamento Executivo</h2>
+    <div class="svg-wrap" id="detSvgWrap"></div>
+    <div class="legend">
+      <span><i style="background:#c22f2f"></i> T1 — Tirante</span>
+      <span><i style="background:#1e8b48"></i> C1 — Costura</span>
+      <span><i style="background:#2d6fba"></i> S1 — Suspensão</span>
+      <span><i style="background:#f0a92a"></i> Aparelho de apoio</span>
+    </div>
+  </div>
+  <div class="card"><h2>Seção Transversal</h2><div class="svg-wrap" id="secSvgWrap"></div></div>
+</section>
+
+<section class="tab-panel" id="tab-quant">
+  <div class="card"><h2>Quantitativo</h2><div id="quantRes"></div>
+    <div class="btn-row"><button class="btn sec" onclick="AP.Export.csv()">Exportar CSV</button></div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-memoria">
+  <div class="card no-print">
+    <h2>Memória de Cálculo</h2>
+    <div class="btn-row">
+      <button class="btn" onclick="AP.Memo.generate()">GERAR MEMÓRIA</button>
+      <button class="btn sec" onclick="window.print()">Imprimir / PDF</button>
+      <button class="btn sec" onclick="AP.Export.json()">Exportar JSON</button>
+    </div>
+  </div>
+  <div class="card memo" id="memoOut"></div>
+</section>
+
+<section class="tab-panel" id="tab-comparacao">
+  <div class="card">
+    <h2>Comparação de Modelos</h2>
+    <div id="compContent"></div>
+  </div>
+</section>
+
+<section class="tab-panel" id="tab-valid">
+  <div class="card"><h2>Validação</h2><div id="validOut"></div>
+    <button class="btn" onclick="AP.Valid.run()">Executar Testes</button>
+  </div>
+</section>
+
+</main>
+
+<div class="fixed-calc no-print">
+  <button class="btn" onclick="AP.Recalc.run()">🔄 CALCULAR CONSOLO</button>
+  <button class="btn ok" onclick="AP.Recalc.viewResults()">✅ VER RESULTADOS</button>
+</div>
+
+<script>
+/* =====================================================================
+   APavan Consolo — NBR 6118:2023 + Shear-Friction
+   Logo externa em arquivo (logo.png na mesma pasta)
+   ===================================================================== */
+const LOGO_FILE = 'logo.png';   // ← altere para 'logo.jpg' se sua imagem for JPG
+
+const AP = (function(){
+'use strict';
+
+/* ============================================================
+   LOGO — arquivo local (mesma pasta do index.html)
+   ============================================================ */
+function injectLogoAssets(){
+  const logoURL = LOGO_FILE;
+  // Preview grande na aba Projeto
+  const prev = document.getElementById('logoPreview');
+  if(prev){
+    prev.innerHTML = `<img src="${logoURL}" alt="APavan" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\\'color:#7cc2ff;font-size:14px;text-align:center;padding:20px\\'>⚠ Coloque o arquivo <b>${LOGO_FILE}</b> na mesma pasta do index.html</div>'">`;
+  }
+  // Logo no cabeçalho — com fallback
+  const header = document.getElementById('headerLogo');
+  if(header){
+    const img = document.createElement('img');
+    img.src = logoURL;
+    img.alt = 'APavan';
+    img.onerror = ()=>{
+      header.innerHTML = '<div class="logo-fallback">A</div>';
+    };
+    header.innerHTML = '';
+    header.appendChild(img);
   }
 }
+
+/* ============================================================
+   ESTADO GLOBAL
+   ============================================================ */
+const S = {
+  projeto:{nome:'',resp:'',local:'',data:'',num:''},
+  geometria:{b:30,h:55,L:30,a:15,d:50,cnom:2.5,phiTir:16,bp:40,hp:40,tipo:'externo',forma:'retangular',caa:'II',elem:'normal'},
+  cargas:[],apoio:{tipo:'neoprene',l:20,c:15,e:1},
+  coefs:{gg:1.4,gq:1.4,gc:1.4,gs:1.15,p0:0.7,p1:0.6,p2:0.4},
+  conc:{fck:30,alphaE:1.0},aco:{cat:'CA-50',fyk:500,Es:210},
+  atrito:{mu:1.4,sigma:0,tipo:'monolitico'},
+  modelo:'auto',results:null
+};
+
+/* ============================================================
+   NORMAS
+   ============================================================ */
+const NORMAS = {
+  fcd(fck,gc=1.4){return fck/gc},
+  fctm(fck){return fck<=50?0.3*Math.pow(fck,2/3):2.12*Math.log(1+0.11*fck)},
+  fctk_inf(fck){return 0.7*this.fctm(fck)},
+  fctk_sup(fck){return 1.3*this.fctm(fck)},
+  Eci(fck,aE=1){return fck<=50?aE*5600*Math.sqrt(fck):21500*aE*Math.pow((fck/10+1.25)/1.25,1/3)},
+  Ecs(fck,aE=1){return 0.8*this.Eci(fck,aE)},
+  fcd1(fck,gc=1.4){return 0.85*this.fcd(fck,gc)},
+  fcd2(fck,gc=1.4){return 0.85*(1-fck/250)*this.fcd(fck,gc)},
+  fcd3(fck,gc=1.4){return 0.72*(1-fck/250)*this.fcd(fck,gc)},
+  fbd(phi,fck,e1=2.25,e2=1,e3=1,gc=1.4){return e1*e2*e3*this.fctk_inf(fck)/gc},
+  lb(phi,fck,fyd,e1=2.25,e2=1,e3=1,gc=1.4){return (phi/4)*(fyd/this.fbd(phi,fck,e1,e2,e3,gc))},
+  lbMin(phi,lb){return Math.max(0.3*lb,10*phi,100)}
+};
+
+const MATERIAIS = {
+  compute(){
+    const fck=+S.conc.fck,aE=+S.conc.alphaE,gc=+S.coefs.gc;
+    const c={fck,fcd:NORMAS.fcd(fck,gc),fctm:NORMAS.fctm(fck),fctk_inf:NORMAS.fctk_inf(fck),fctk_sup:NORMAS.fctk_sup(fck),Eci:NORMAS.Eci(fck,aE),Ecs:NORMAS.Ecs(fck,aE)};
+    const fyk=+S.aco.fyk,gs=+S.coefs.gs;
+    const a={fyk,fyd:fyk/gs,Es:+S.aco.Es*1000,cat:S.aco.cat};
+    return {c,a};
+  }
+};
+
+const GEOMETRIA = {
+  classify(){
+    const {a,d}=S.geometria;const ad=a/d;let tipo='',metodo='',alertas=[],modeloSugerido='bt';
+    if(ad<=0.5){
+      tipo='Consolo muito curto';metodo='atrito-cisalhamento (shear-friction)';modeloSugerido='atrito';
+      alertas.push('CONSOLO MUITO CURTO — MODELO ATRITO-CISALHAMENTO RECOMENDADO (ver aba ⑦)');
+    } else if(ad<=1.0){tipo='Consolo curto';metodo='bielas-tirantes';modeloSugerido='bt';}
+    else if(ad<=2.0){tipo='Consolo (transição)';metodo='bielas-tirantes + flexão complementar';modeloSugerido='bt';}
+    else{tipo='Viga em balanço';metodo='flexão';modeloSugerido='flexao';}
+    return {ad,tipo,metodo,alertas,a,d,modeloSugerido};
+  }
+};
+
+const CARGAS = {selfWeight(){const {b,h,L}=S.geometria;return (b/100)*(h/100)*(L/100)*25;}};
+
+const COMBINACOES = {
+  build(loads,coefs,pp){
+    let Gk=pp,Qk=0,Hk=0,Mk=0;
+    loads.forEach(l=>{
+      const Fk=+l.Fk||0,H=+l.Hk||0,M=+l.Mk||0;
+      if(l.tipo==='G')Gk+=Fk;else Qk+=Fk;
+      Hk+=H;Mk+=M;
+    });
+    return {
+      ELU:{Fd:coefs.gg*Gk+coefs.gq*Qk,Hd:coefs.gg*Hk,Md:coefs.gg*Mk,pp:coefs.gg*pp,Gk,Qk},
+      ELS_qp:{Fd:Gk+coefs.p2*Qk,Hd:Hk,Md:Mk},
+      ELS_freq:{Fd:Gk+coefs.p1*Qk,Hd:Hk,Md:Mk},
+      ELS_rara:{Fd:Gk+Qk,Hd:Hk,Md:Mk},
+      Gk_total:Gk,Qk_total:Qk,Hk_total:Hk,Mk_total:Mk,pp
+    };
+  }
+};
+
+const BIELAS_TIRANTES = {
+  compute(Fd,Hd,a,d,b,apoio){
+    const d_prima=0.10*d,z=d-d_prima;
+    const theta=Math.atan2(z,a),sin_t=Math.sin(theta),cos_t=Math.cos(theta),tan_t=Math.tan(theta);
+    const Rcd=Fd/sin_t,Rsd=Fd/tan_t+Hd,Lstrut=Math.hypot(a,z);
+    const sigma_cd=Fd/(b*d*sin_t*sin_t)*10;
+    const a_ap=(apoio&&apoio.l>0)?apoio.l:a;
+    const sigma_contato=(Fd/(b*a_ap))*10;
+    return {z,d_prima,theta,theta_deg:theta*180/Math.PI,sin_t,cos_t,tan_t,Rcd,Rsd,Lstrut,sigma_cd,sigma_contato,a_ap,a};
+  }
+};
+
+/* ============================================================
+   ATRITO-CISALHAMENTO (SHEAR-FRICTION)
+   τu = τo + μ·(ρ·fy + σ)
+   ============================================================ */
+const ATRITO_CISALHAMENTO = {
+  TAU_O: 3.92,
+  MU: {monolitico:1.4, junta:1.0, aco:0.7},
+
+  compute(Vd, b, d, fyd, mu, sigma){
+    const tau_sd = (Vd/(b*d))*10;
+    const tau_o = this.TAU_O;
+    const numerador = (tau_sd - tau_o)/mu - sigma;
+    const As_nec_mpa = numerador > 0 ? numerador * b * d / fyd : 0;
+    const As_min = 0.001*b*d;
+    return {tau_sd,tau_o,mu,sigma,tau_o_mu_sigma:tau_o+mu*sigma,As_nec_mpa,As_min,
+            tau_res_sem_aco:tau_o+mu*sigma,dispensa:tau_sd<=tau_o+mu*sigma};
+  },
+
+  verificar(Vd, b, d, As_ad, fyd, mu, sigma){
+    const tau_sd = (Vd/(b*d))*10;
+    const rho = As_ad/(b*d);
+    const tau_u = this.TAU_O + mu*(rho*fyd + sigma);
+    return {tau_sd,rho,tau_u,util:tau_sd/tau_u,ok:tau_sd<=tau_u};
+  }
+};
+
+const TIRANTE = {
+  compute(Rsd,fyd,phi_ini,b,h){
+    const As_nec=(Rsd*10)/fyd,As_min=0.0015*b*h,As_req=Math.max(As_nec,As_min);
+    const bitolas=[10,12.5,16,20,25,32];let best=null;
+    for(const phi of bitolas){
+      const A1=Math.PI*Math.pow(phi/10,2)/4;
+      for(let n=2;n<=12;n++){
+        const As_ad=n*A1;
+        if(As_ad>=As_req){
+          const esp=(b-2*2.5)/(n-1);
+          if(esp>=Math.max(2,phi/10*1.2)&&esp<=30){
+            const cand={phi,n,As_ad,esp,ratio:As_ad/As_req};
+            if(!best||cand.As_ad<best.As_ad)best=cand;
+          }
+        }
+      }
+      if(best&&phi>=phi_ini)break;
+    }
+    if(!best){const phi=20,A1=Math.PI*Math.pow(phi/10,2)/4,n=Math.ceil(As_req/A1);best={phi,n,As_ad:n*A1,esp:(b-5)/(n-1),ratio:1};}
+    return {...best,As_nec,As_min,As_req,fyd};
+  }
+};
+
+const NOS = {
+  verify(Rcd,Fd,sigma_cd,sigma_contato,fck,gc,b,d,a){
+    const fcd1=NORMAS.fcd1(fck,gc),fcd2=NORMAS.fcd2(fck,gc),fcd3=NORMAS.fcd3(fck,gc);
+    const util_contato=sigma_contato/fcd2,util_biela=sigma_cd/fcd2;
+    const a0=Math.min(d*0.5,10+a),sigma_no_inf=(Rcd/(b*a0))*10,util_no_inf=sigma_no_inf/fcd1;
+    return {fcd1,fcd2,fcd3,util_contato,util_biela,util_no_inf,sigma_no_inf,a0};
+  }
+};
+
+const COSTURA = {
+  compute(As_tir,b,h){
+    const As_cost_nec=0.5*As_tir,As_cost_min=0.001*b*h,As_cost=Math.max(As_cost_nec,As_cost_min);
+    const opcoes=[6.3,8,10];let best=null;
+    for(const phi of opcoes){
+      const A1=Math.PI*Math.pow(phi/10,2)/4,nr=2,n_est=Math.ceil(As_cost/(A1*nr));
+      const s=Math.min(15,Math.max(8,30/n_est));
+      if(!best||n_est*A1*nr<best.As_ad*1.15)best={phi,n_est,n_ramos:nr,s,As_ad:n_est*A1*nr};
+    }
+    return {...best,As_cost_nec,As_cost_min,As_cost};
+  }
+};
+
+const SUSPENSAO = {
+  compute(Fd,fyd,b,h){
+    const As_susp_nec=(Fd*10)/fyd,As_susp_min=0.0005*b*h,As_susp=Math.max(As_susp_nec,As_susp_min);
+    const phi=8,A1=Math.PI*Math.pow(phi/10,2)/4,n=Math.max(2,Math.ceil(As_susp/(2*A1)));
+    return {As_susp_nec,As_susp_min,As_susp,phi,n,n_ramos:2};
+  }
+};
+
+const ANCORAGEM = {
+  compute(phi_mm,fck,fyd,As_nec,As_ef,tipo,cnom_cm,d_cm,b_cm,a_cm){
+    const lb=NORMAS.lb(phi_mm,fck,fyd),lb_min=NORMAS.lbMin(phi_mm,lb);
+    let alpha=1.0;
+    if(tipo==='gancho')alpha=0.7;
+    let lb_nec=Math.max(alpha*lb*(As_nec/As_ef),lb_min);
+    const lb_disp=Math.max((a_cm-cnom_cm)*10,(d_cm-cnom_cm)*10*0.8);
+    return {lb,lb_min,lb_nec,lb_disp,alpha,ok:lb_disp>=lb_nec,phi_mm,fck,fyd,As_nec,As_ef};
+  }
+};
+
+const CISALHAMENTO = {
+  compute(Vd,b,d,fck,gc){
+    const fcd=NORMAS.fcd(fck,gc),fctk_inf=NORMAS.fctk_inf(fck),fctd=fctk_inf/gc;
+    const alpha_v2=1-fck/250,VRd2=0.27*alpha_v2*fcd*b*d/10;
+    const rho_l=0.02,k=Math.min(2,1.6-d/100);
+    const VRd_c=(0.12*k*Math.pow(100*rho_l*fck,1/3)*b*d)/1000;
+    return {VRd2:VRd2*10,VRd_c:VRd_c*10,fctd,alpha_v2,rho_l};
+  }
+};
+
+const FLEXAO = {
+  compute(Md,b,d,fck,fyd,gc){
+    const fcd=NORMAS.fcd(fck,gc),Md_KNcm=Md*100;
+    const A=0.68*b*fcd*0.4,B=-0.68*b*fcd*d,C=Md_KNcm;
+    const disc=B*B-4*A*C;
+    if(disc<0)return {convergiu:false,Md};
+    const x1=(-B+Math.sqrt(disc))/(2*A),x2=(-B-Math.sqrt(disc))/(2*A);
+    let x=Math.min(x1,x2);if(x<0)x=Math.max(x1,x2);
+    const xd=x/d,z=d-0.4*x,As_nec=Md_KNcm/(fyd/10*z);
+    return {x,xd,z,As_nec,convergiu:true,Md,fcd};
+  }
+};
+
+const ELS = {
+  computeFlecha(Fd_serv,a,d,b,h,fck,Es,As,cnom){
+    const Ecs=NORMAS.Ecs(fck,1.0),Ic=b*Math.pow(h,3)/12;
+    const fctm=NORMAS.fctm(fck),Mr=(fctm*b*h*h/6)/1000,Ma=Fd_serv*a/100;
+    let Ieq=Ic,ratio=1;
+    if(Ma>0.001){ratio=Math.min(1,Math.pow(Mr/Ma,3));const Icr=0.4*Ic;Ieq=ratio*Ic+(1-ratio)*Icr;}
+    const Ecs_kNcm2=Ecs*0.1,delta_cm=(Fd_serv*Math.pow(a,3))/(3*Ecs_kNcm2*Ieq),delta=delta_cm*10;
+    const alpha_f=2.0,delta_long=delta*(1+alpha_f);
+    return {delta,delta_long,delta_total:delta_long,Ecs,Ic,Ieq,Mr,Ma,ratio};
+  }
+};
+
+const SIMPLIFICADO = {
+  compute(Fd, b, d, a, fcd){
+    const d_ef = 0.8 * d;
+    const alpha_rad = Math.atan(a / d_ef);
+    const alpha_deg = alpha_rad * 180 / Math.PI;
+    const sin_a = Math.sin(alpha_rad),cos_a = Math.cos(alpha_rad);
+    const sen2a = Math.sin(2 * alpha_rad);
+    const sigma_biela = (Fd / (0.2 * b * d * sen2a)) * 10;
+    const tau_d = (Fd / (b * d)) * 10;
+    const tau_lim = 0.2 * fcd * sen2a;
+    const T = Fd * Math.tan(alpha_rad);
+    const C = Fd / cos_a;
+    return {d_ef,alpha_rad,alpha_deg,sin_a,cos_a,sen2a,sigma_biela,tau_d,tau_lim,T,C,verif_biela:sigma_biela<=fcd,verif_cis:tau_d<=tau_lim};
+  }
+};
+
+function runCalc(){
+  const g=S.geometria,c=S.conc,coefs=S.coefs,apo=S.apoio;
+  const mat=MATERIAIS.compute(),pp=CARGAS.selfWeight();
+  const comb=COMBINACOES.build(S.cargas,coefs,pp),classif=GEOMETRIA.classify();
+  const elu=comb.ELU,Fd=elu.Fd,Hd=elu.Hd;
+  const Md=Fd*g.a/100+Hd*(g.h-g.d)/100+elu.Md;
+  const bt=BIELAS_TIRANTES.compute(Fd,Hd,g.a,g.d,g.b,apo);
+  const tir=TIRANTE.compute(bt.Rsd,mat.a.fyd,g.phiTir,g.b,g.h);
+  const nos=NOS.verify(bt.Rcd,Fd,bt.sigma_cd,bt.sigma_contato,c.fck,coefs.gc,g.b,g.d,g.a);
+  const cost=COSTURA.compute(tir.As_ad,g.b,g.h);
+  const susp=SUSPENSAO.compute(Fd,mat.a.fyd,g.b,g.h);
+  const anc=ANCORAGEM.compute(tir.phi,c.fck,mat.a.fyd,tir.As_nec,tir.As_ad,'reta',g.cnom,g.d,g.b,g.a);
+  const ancCost=ANCORAGEM.compute(cost.phi,c.fck,mat.a.fyd,cost.As_cost,cost.As_ad,'gancho',g.cnom,g.d,g.b,g.a);
+  const cis=CISALHAMENTO.compute(Fd,g.b,g.d,c.fck,coefs.gc);
+  const flex=FLEXAO.compute(Md,g.b,g.d,c.fck,mat.a.fyd,coefs.gc);
+  const elsf=ELS.computeFlecha(comb.ELS_freq.Fd,g.a,g.d,g.b,g.h,c.fck,mat.a.Es,tir.As_ad,g.cnom);
+  const sim=SIMPLIFICADO.compute(Fd,g.b,g.d,g.a,mat.c.fcd);
+  const muVal = ATRITO_CISALHAMENTO.MU[S.atrito.tipo] || S.atrito.mu;
+  const sigmaVal = S.atrito.sigma;
+  const atr = ATRITO_CISALHAMENTO.compute(Fd, g.b, g.d, mat.a.fyd, muVal, sigmaVal);
+  const atrVerif = ATRITO_CISALHAMENTO.verificar(Fd, g.b, g.d, tir.As_ad, mat.a.fyd, muVal, sigmaVal);
+
+  const verifs=[];
+  verifs.push({nome:'Biela',eta:nos.util_biela,ok:nos.util_biela<1,norma:'NBR 6118:2023 §22.5.2'});
+  verifs.push({nome:'Nó N1 (CCT)',eta:nos.util_contato,ok:nos.util_contato<1,norma:'NBR 6118:2023 §22.5.2'});
+  verifs.push({nome:'Nó N2 (CCC)',eta:nos.util_no_inf,ok:nos.util_no_inf<1,norma:'NBR 6118:2023 §22.5.2'});
+  verifs.push({nome:'Tirante',eta:tir.As_nec/tir.As_ad,ok:tir.As_nec<=tir.As_ad,norma:'NBR 6118:2023 §22.5.1'});
+  verifs.push({nome:'Cisalhamento',eta:Fd/cis.VRd2,ok:Fd<cis.VRd2,norma:'NBR 6118:2023 §19.4'});
+  verifs.push({nome:'Ancoragem',eta:anc.lb_nec/anc.lb_disp,ok:anc.ok,norma:'NBR 6118:2023 §9.4'});
+  verifs.push({nome:'Contato',eta:nos.util_contato,ok:nos.util_contato<1,norma:'NBR 6118:2023 §22.5'});
+  verifs.push({nome:'Atrito-cis.',eta:atrVerif.util,ok:atrVerif.ok,norma:'Shear-friction (τo + μ(ρfy+σ))'});
+  const cnom_req={I:2.0,II:2.5,III:3.5,IV:4.0}[g.caa]||2.5;
+  verifs.push({nome:'Cobrimento',eta:cnom_req/g.cnom,ok:cnom_req<=g.cnom,norma:'NBR 6118:2023 §7.4'});
+  const lim_flecha=Math.min(20,g.a*100/250);
+  verifs.push({nome:'Deslocamento',eta:elsf.delta_total/lim_flecha,ok:elsf.delta_total<lim_flecha,norma:'NBR 6118:2023 §13.3'});
+
+  return {mat,comb,pp,classif,elu,bt,tir,nos,cost,susp,anc,ancCost,cis,flex,elsf,sim,atr,atrVerif,Fd,Hd,Md,verifs,cnom_req};
+}
+
+/* ============ PROJETO ============ */
+const Project = {
+  KEY:'apavan_consolo_projects_v5',
+  list(){try{return JSON.parse(localStorage.getItem(this.KEY))||[]}catch(e){return[]}},
+  saveList(l){localStorage.setItem(this.KEY,JSON.stringify(l))},
+  snapshot(){return JSON.parse(JSON.stringify(S))},
+  restore(s){Object.assign(S,s);this.syncUI()},
+  save(){
+    S.projeto={nome:document.getElementById('p_nome').value,resp:document.getElementById('p_resp').value,local:document.getElementById('p_local').value,data:document.getElementById('p_data').value,num:document.getElementById('p_num').value};
+    const list=this.list(),snap=this.snapshot(),key=S.projeto.nome+'|'+(S.projeto.num||'');
+    const idx=list.findIndex(x=>x.key===key);
+    const entry={key,data:new Date().toISOString(),snap};
+    if(idx>=0)list[idx]=entry;else list.push(entry);
+    this.saveList(list);alert('Projeto salvo');this.renderList();
+  },
+  newProject(){if(confirm('Novo projeto?'))location.reload()},
+  remove(){const n=prompt('Nome a excluir:');if(!n)return;this.saveList(this.list().filter(x=>!x.key.startsWith(n)));this.renderList()},
+  openList(){const l=this.list();if(!l.length){alert('Nenhum projeto');return;}
+    const names=l.map((x,i)=>(i+1)+'. '+x.snap.projeto.nome).join('\n');
+    const idx=parseInt(prompt('Número:\n'+names))-1;
+    if(idx>=0&&idx<l.length){this.restore(l[idx].snap);alert('Aberto')}},
+  exportJSON(){const b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='apavan.json';a.click()},
+  importJSON(){const i=document.createElement('input');i.type='file';i.accept='.json';i.onchange=e=>{const r=new FileReader();r.onload=ev=>{try{this.restore(JSON.parse(ev.target.result));alert('Importado')}catch(x){alert('Inválido')}};r.readAsText(e.target.files[0])};i.click()},
+  renderList(){const l=this.list();const el=document.getElementById('projectList');if(!el)return;el.innerHTML=l.length?l.map(x=>`<div class="metric" style="margin-bottom:6px"><b>${x.snap.projeto.nome}</b></div>`).join(''):'<div style="color:var(--cinza);font-size:12px">Nenhum</div>'},
+  syncUI(){
+    const set=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v};
+    set('p_nome',S.projeto.nome);set('p_resp',S.projeto.resp);set('p_local',S.projeto.local);
+    set('g_b',S.geometria.b);set('g_h',S.geometria.h);set('g_L',S.geometria.L);set('g_a',S.geometria.a);set('g_d',S.geometria.d);set('g_cnom',S.geometria.cnom);set('g_phi',S.geometria.phiTir);
+    set('g_bp',S.geometria.bp);set('g_hp',S.geometria.hp);set('g_caa',S.geometria.caa);
+    set('ap_tipo',S.apoio.tipo);set('ap_l',S.apoio.l);set('ap_c',S.apoio.c);
+    set('c_gg',S.coefs.gg);set('c_gq',S.coefs.gq);set('c_gc',S.coefs.gc);set('c_gs',S.coefs.gs);
+    set('m_fck',S.conc.fck);set('m_aco',S.aco.cat);set('m_fyk',S.aco.fyk);set('m_Es',S.aco.Es);
+    Loads.render();
+  }
+};
+
+function bindInput(id,obj,key,num){const el=document.getElementById(id);if(!el)return;el.addEventListener('input',()=>{obj[key]=num?(parseFloat(el.value)||0):el.value})}
+function bindAllInputs(){
+  ['p_nome','p_resp','p_local','p_data','p_num'].forEach(id=>{const el=document.getElementById(id);el.addEventListener('input',()=>{S.projeto[id.replace('p_','')]=el.value})});
+  const gmap={g_b:'b',g_h:'h',g_L:'L',g_a:'a',g_d:'d',g_cnom:'cnom',g_phi:'phiTir',g_bp:'bp',g_hp:'hp'};
+  Object.entries(gmap).forEach(([id,k])=>bindInput(id,S.geometria,k,true));
+  ['g_tipo','g_forma','g_caa'].forEach(id=>{const el=document.getElementById(id);el.addEventListener('change',()=>{S.geometria[id.replace('g_','')]=el.value;renderGeomSvg()})});
+  bindInput('ap_l',S.apoio,'l',true);bindInput('ap_c',S.apoio,'c',true);
+  document.getElementById('ap_tipo').addEventListener('change',e=>{S.apoio.tipo=e.target.value});
+  ['c_gg','c_gq','c_gc','c_gs','c_p0','c_p1','c_p2'].forEach(id=>bindInput(id,S.coefs,id.replace('c_',''),true));
+  document.getElementById('m_classe').addEventListener('change',e=>{const v=e.target.value;if(v!=='manual'){const fck=parseInt(v.replace('C',''));document.getElementById('m_fck').value=fck;S.conc.fck=fck}updateMaterialsTables()});
+  bindInput('m_fck',S.conc,'fck',true);document.getElementById('m_fck').addEventListener('input',updateMaterialsTables);
+  document.getElementById('m_alphaE').addEventListener('change',e=>{S.conc.alphaE=parseFloat(e.target.value);updateMaterialsTables()});
+  document.getElementById('m_aco').addEventListener('change',e=>{S.aco.cat=e.target.value;S.aco.fyk=e.target.value==='CA-50'?500:600;document.getElementById('m_fyk').value=S.aco.fyk;updateMaterialsTables()});
+  bindInput('m_fyk',S.aco,'fyk',true);bindInput('m_Es',S.aco,'Es',true);
+  document.getElementById('m_fyk').addEventListener('input',updateMaterialsTables);
+  document.querySelectorAll('#btToggles input').forEach(c=>c.addEventListener('change',()=>renderBTSvg()));
+}
+
+const Loads = {
+  addLoad(){S.cargas.push({Fk:100,Hk:0,Mk:0,e:0,tipo:'Q',label:'Carga '+(S.cargas.length+1)});this.render()},
+  removeLoad(i){S.cargas.splice(i,1);this.render()},
+  calcSelfWeight(){const pp=CARGAS.selfWeight();const ex=S.cargas.findIndex(x=>x.label==='Peso próprio');
+    if(ex>=0)S.cargas[ex].Fk=pp;else S.cargas.push({Fk:pp,Hk:0,Mk:0,e:0,tipo:'G',label:'Peso próprio'});
+    this.render();alert('Peso próprio: '+pp.toFixed(2)+' kN')},
+  render(){const el=document.getElementById('loadsContainer');if(!el)return;
+    if(!S.cargas.length){el.innerHTML='<div class="alert info"><span class="ic">i</span><div>Nenhuma carga. Clique em + ADICIONAR CARGA.</div></div>';return}
+    el.innerHTML=S.cargas.map((c,i)=>`
+      <div class="load-row">
+        <div class="hd"><span class="lbl">${c.label}</span><button class="rm" onclick="AP.Loads.removeLoad(${i})">×</button></div>
+        <div class="grid">
+          <div><label>F<sub>k</sub> [kN]</label><input type="number" value="${c.Fk}" step="0.5" oninput="AP.Loads.upd(${i},'Fk',this.value)"></div>
+          <div><label>H<sub>k</sub> [kN]</label><input type="number" value="${c.Hk}" step="0.5" oninput="AP.Loads.upd(${i},'Hk',this.value)"></div>
+          <div><label>M<sub>k</sub> [kN.m]</label><input type="number" value="${c.Mk}" step="0.1" oninput="AP.Loads.upd(${i},'Mk',this.value)"></div>
+          <div><label>Tipo</label><select onchange="AP.Loads.upd(${i},'tipo',this.value)"><option value="G" ${c.tipo==='G'?'selected':''}>G</option><option value="Q" ${c.tipo==='Q'?'selected':''}>Q</option></select></div>
+        </div>
+      </div>`).join('')},
+  upd(i,k,v){S.cargas[i][k]=(k==='tipo')?v:(parseFloat(v)||0)}
+};
+
+function initTabs(){
+  document.querySelectorAll('#tabsList button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('#tabsList button').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const el=document.getElementById('tab-'+b.dataset.tab);if(el)el.classList.add('active');
+      const t=b.dataset.tab;
+      if(t==='graficos')renderCharts();
+      if(t==='materiais')updateMaterialsTables();
+      if(t==='geometria')renderGeomSvg();
+      if(t==='modelo'){renderClassif();renderBTSvg()}
+      if(t==='atrito')renderAtrito();
+      if(t==='detalhe'){renderDetSvg();renderSecSvg()}
+      if(t==='quant')renderQuant();
+      if(t==='comparacao')renderComparison();
+    });
+  });
+}
+
+function makeChart(cv,data,opt){
+  const ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+  const pad={l:60,r:20,t:30,b:45},pw=W-pad.l-pad.r,ph=H-pad.t-pad.b;
+  ctx.strokeStyle='#5a6b7f';ctx.beginPath();
+  ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,pad.t+ph);ctx.lineTo(pad.l+pw,pad.t+ph);ctx.stroke();
+  const xmin=0,xmax=Math.max(...data.map(d=>d.x),1);
+  const ymin=opt.ymin!==undefined?opt.ymin:Math.min(0,...data.map(d=>d.y));
+  const ymax=opt.ymax!==undefined?opt.ymax:Math.max(...data.map(d=>d.y),1);
+  const sx=v=>pad.l+(v-xmin)/(xmax-xmin)*pw,sy=v=>pad.t+ph-(v-ymin)/(ymax-ymin)*ph;
+  ctx.strokeStyle='#e6ebf1';
+  for(let i=0;i<=5;i++){
+    const y=pad.t+ph*i/5;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+pw,y);ctx.stroke();
+    ctx.fillStyle='#5a6b7f';ctx.font='10px Arial';ctx.textAlign='right';
+    ctx.fillText((ymax-(ymax-ymin)*i/5).toFixed(opt.dec||1),pad.l-5,y+3);
+  }
+  for(let i=0;i<=5;i++){
+    const x=pad.l+pw*i/5;ctx.beginPath();ctx.moveTo(x,pad.t);ctx.lineTo(x,pad.t+ph);ctx.stroke();
+    ctx.fillStyle='#5a6b7f';ctx.font='10px Arial';ctx.textAlign='center';
+    ctx.fillText((xmin+(xmax-xmin)*i/5).toFixed(1),x,pad.t+ph+15);
+  }
+  ctx.fillStyle='#1a4a7f';ctx.font='bold 11px Arial';ctx.textAlign='center';
+  ctx.fillText(opt.xlabel||'x',pad.l+pw/2,H-8);
+  if(data.length){
+    ctx.strokeStyle=opt.color||'#2d6fba';ctx.lineWidth=2;ctx.beginPath();
+    data.forEach((d,i)=>{const x=sx(d.x),y=sy(d.y);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});
+    ctx.stroke();
+  }
+  ctx.fillStyle='#1a4a7f';ctx.font='bold 12px Arial';ctx.textAlign='left';
+  ctx.fillText(opt.title||'',pad.l+6,pad.t-10);
+}
+
+function renderGeomSvg(){
+  const g=S.geometria,W=520,H=300,scale=Math.min(W/(g.bp+g.L+20),H/(g.h+20));
+  const bx=40,by=30,pw=g.bp*scale,ph=g.hp*scale,cw=g.L*scale,ch=g.h*scale,cx=bx+pw,cy=by+60;
+  document.getElementById('geomSvgWrap').innerHTML=`
+  <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <rect x="${bx}" y="${cy}" width="${pw}" height="${ph}" fill="#8896a8" stroke="#0d2b4e" stroke-width="1.5"/>
+    <text x="${bx+pw/2}" y="${cy+ph/2+4}" text-anchor="middle" font-size="11" fill="#fff" font-weight="bold">PILAR</text>
+    <rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" fill="#d0d8e0" stroke="#0d2b4e" stroke-width="1.5"/>
+    <text x="${cx+cw/2}" y="${cy+ch/2+4}" text-anchor="middle" font-size="11" fill="#0d2b4e" font-weight="bold">CONSOLO</text>
+    <rect x="${cx+cw*0.5-20}" y="${cy-8}" width="40" height="8" fill="#f0a92a" stroke="#0d2b4e"/>
+    <line x1="${cx+cw*0.5}" y1="${cy-40}" x2="${cx+cw*0.5}" y2="${cy-8}" stroke="#c22f2f" stroke-width="2.5" marker-end="url(#arr)"/>
+    <text x="${cx+cw*0.5+6}" y="${cy-30}" font-size="11" fill="#c22f2f" font-weight="bold">Fd</text>
+    <text x="${cx+cw+8}" y="${cy+ch/2}" font-size="10" fill="#5a6b7f">L=${g.L}</text>
+    <text x="${cx+8}" y="${cy-16}" font-size="10" fill="#5a6b7f">b=${g.b}</text>
+    <text x="${cx+cw+8}" y="${cy-4}" font-size="10" fill="#5a6b7f">h=${g.h}</text>
+    <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c22f2f"/></marker></defs>
+  </svg>`;
+}
+
+function renderBTSvg(){
+  const g=S.geometria,res=S.results;
+  const tg={};document.querySelectorAll('#btToggles input').forEach(c=>tg[c.dataset.tg]=c.checked);
+  const W=720,H=420;
+  const px=60,py=90,pilarW=170,pilarH=280;
+  const cx=px+pilarW,scale=3.6;
+  const consW=Math.max(g.L*scale,120),consH=Math.max(g.h*scale,140),cy=py+20;
+  const xLoad=cx+Math.min(g.a*scale,consW-40);
+  const N1x=xLoad,N1y=cy;
+  const N2x=cx+12,N2y=cy+consH-18;
+  const yTir=N1y;
+
+  let svg=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+  svg+=`<rect width="${W}" height="${H}" fill="#fff"/>`;
+  svg+=`<rect x="${px}" y="${py}" width="${pilarW}" height="${pilarH}" fill="#c8d0da" stroke="#0d2b4e" stroke-width="1.8"/>`;
+  svg+=`<text x="${px+pilarW/2}" y="${py+pilarH/2}" text-anchor="middle" font-size="13" fill="#3a4a5c" font-weight="bold" transform="rotate(-90 ${px+pilarW/2} ${py+pilarH/2})">PILAR</text>`;
+  svg+=`<rect x="${cx}" y="${cy}" width="${consW}" height="${consH}" fill="#f4f7fa" stroke="#0d2b4e" stroke-width="1.8"/>`;
+  svg+=`<text x="${cx+consW/2}" y="${cy+consH/2+5}" text-anchor="middle" font-size="12" fill="#8896a8" font-weight="bold">CONSOLO</text>`;
+  svg+=`<rect x="${xLoad-28}" y="${cy-14}" width="56" height="14" fill="#f0a92a" stroke="#0d2b4e"/>`;
+  svg+=`<text x="${xLoad}" y="${cy-18}" text-anchor="middle" font-size="9" fill="#5a6b7f">APARELHO DE APOIO</text>`;
+
+  if(tg.biela){
+    svg+=`<line x1="${N1x}" y1="${N1y}" x2="${N2x}" y2="${N2y}" stroke="#d68b00" stroke-width="18" stroke-linecap="round" opacity="0.5"/>`;
+    svg+=`<line x1="${N1x}" y1="${N1y}" x2="${N2x}" y2="${N2y}" stroke="#a85f00" stroke-width="2" stroke-dasharray="6,4"/>`;
+    const midX=(N1x+N2x)/2,midY=(N1y+N2y)/2;
+    svg+=`<text x="${midX+22}" y="${midY-6}" font-size="11" fill="#7a4f00" font-weight="bold">BIELA</text>`;
+    if(res)svg+=`<text x="${midX+22}" y="${midY+8}" font-size="10" fill="#7a4f00">σcd=${res.bt.sigma_cd.toFixed(2)} MPa</text>`;
+    if(res)svg+=`<text x="${midX+22}" y="${midY+22}" font-size="10" fill="#7a4f00">Rcd=${res.bt.Rcd.toFixed(1)} kN</text>`;
+  }
+  if(tg.tirante){
+    svg+=`<line x1="${N1x}" y1="${yTir}" x2="${px+20}" y2="${yTir}" stroke="#c22f2f" stroke-width="7" stroke-linecap="round"/>`;
+    svg+=`<line x1="${px+20}" y1="${yTir}" x2="${px+20}" y2="${yTir+120}" stroke="#c22f2f" stroke-width="7" stroke-linecap="round"/>`;
+    svg+=`<text x="${(N1x+px)/2}" y="${yTir-14}" text-anchor="middle" font-size="11" fill="#c22f2f" font-weight="bold">TIRANTE (T1)</text>`;
+    if(res)svg+=`<text x="${(N1x+px)/2}" y="${yTir+22}" text-anchor="middle" font-size="10" fill="#c22f2f">Rsd=${res.bt.Rsd.toFixed(1)} kN</text>`;
+  }
+  if(tg.cargas){
+    svg+=`<line x1="${N1x}" y1="${cy-58}" x2="${N1x}" y2="${cy-14}" stroke="#c22f2f" stroke-width="3" marker-end="url(#arrF)"/>`;
+    svg+=`<text x="${N1x+8}" y="${cy-46}" font-size="12" fill="#c22f2f" font-weight="bold">Fd=${res?res.Fd.toFixed(1):'—'} kN</text>`;
+    if(res&&res.Hd>0.01){
+      svg+=`<line x1="${N1x+60}" y1="${cy-6}" x2="${N1x+15}" y2="${cy-6}" stroke="#2d6fba" stroke-width="2.5" marker-end="url(#arrH)"/>`;
+      svg+=`<text x="${N1x+66}" y="${cy-2}" font-size="11" fill="#2d6fba" font-weight="bold">Hd=${res.Hd.toFixed(1)} kN</text>`;
+    }
+  }
+  if(tg.nos){
+    svg+=`<circle cx="${N1x}" cy="${N1y}" r="8" fill="#2d6fba" stroke="#fff" stroke-width="1.5"/>`;
+    svg+=`<text x="${N1x+12}" y="${N1y-10}" font-size="11" fill="#2d6fba" font-weight="bold">N1 (CCT)</text>`;
+    svg+=`<circle cx="${N2x}" cy="${N2y}" r="8" fill="#2d6fba" stroke="#fff" stroke-width="1.5"/>`;
+    svg+=`<text x="${N2x-15}" y="${N2y+22}" text-anchor="end" font-size="11" fill="#2d6fba" font-weight="bold">N2 (CCC)</text>`;
+  }
+  if(tg.cotas){
+    svg+=`<line x1="${cx}" y1="${cy+consH+30}" x2="${N1x}" y2="${cy+consH+30}" stroke="#0d2b4e"/>`;
+    svg+=`<text x="${(cx+N1x)/2}" y="${cy+consH+48}" text-anchor="middle" font-size="10" fill="#0d2b4e">a = ${g.a} cm</text>`;
+    svg+=`<line x1="${cx-16}" y1="${cy}" x2="${cx-16}" y2="${N2y}" stroke="#0d2b4e" stroke-dasharray="3,2"/>`;
+    svg+=`<text x="${cx-20}" y="${(cy+N2y)/2}" text-anchor="end" font-size="10" fill="#0d2b4e">d=${g.d}</text>`;
+    if(res)svg+=`<text x="${N2x+25}" y="${N2y-15}" font-size="11" fill="#7a4f00" font-weight="bold">θ=${res.bt.theta_deg.toFixed(1)}°</text>`;
+  }
+  svg+=`<defs>
+    <marker id="arrF" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c22f2f"/></marker>
+    <marker id="arrH" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2d6fba"/></marker>
+  </defs></svg>`;
+  document.getElementById('btSvgWrap').innerHTML=svg;
+}
+
+function renderDetSvg(){
+  const g=S.geometria,res=S.results;
+  const W=800,H=520;
+  const px=50,py=40,pilarW=240,pilarH=430;
+  const cx=px+pilarW,consW=200,consH=170,cy=py+50;
+  const cnom_px=12;
+  const xLoad=cx+g.a/g.L*consW*0.9;
+  const yTir=cy+cnom_px+14;
+  const xTirDesce=px+50,tirVerticalLen=180;
+  let svg=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+  svg+=`<rect width="${W}" height="${H}" fill="#fff"/>`;
+  svg+=`<rect x="${px}" y="${py}" width="${pilarW}" height="${pilarH}" fill="#cdd6e0" stroke="#0d2b4e" stroke-width="1.8"/>`;
+  svg+=`<text x="${px+pilarW/2}" y="${py+pilarH/2}" text-anchor="middle" font-size="18" fill="#3a4a5c" font-weight="bold" transform="rotate(-90 ${px+pilarW/2} ${py+pilarH/2})">PILAR</text>`;
+  svg+=`<rect x="${cx}" y="${cy}" width="${consW}" height="${consH}" fill="#f4f7fa" stroke="#0d2b4e" stroke-width="1.8"/>`;
+  svg+=`<text x="${cx+consW/2}" y="${cy+consH/2+5}" text-anchor="middle" font-size="14" fill="#8896a8" font-weight="bold">CONSOLO</text>`;
+  svg+=`<line x1="${xTirDesce}" y1="${yTir}" x2="${cx+consW-cnom_px-6}" y2="${yTir}" stroke="#c22f2f" stroke-width="8" stroke-linecap="round"/>`;
+  svg+=`<line x1="${xTirDesce}" y1="${yTir}" x2="${xTirDesce}" y2="${yTir+tirVerticalLen}" stroke="#c22f2f" stroke-width="8" stroke-linecap="round"/>`;
+  svg+=`<line x1="${xTirDesce}" y1="${yTir+tirVerticalLen}" x2="${xTirDesce+40}" y2="${yTir+tirVerticalLen}" stroke="#c22f2f" stroke-width="8" stroke-linecap="round"/>`;
+  svg+=`<text x="${cx+40}" y="${yTir-12}" font-size="12" fill="#c22f2f" font-weight="bold">T1 — Tirante principal (topo → desce no pilar)</text>`;
+  if(res)svg+=`<text x="${cx+40}" y="${yTir+22}" font-size="11" fill="#c22f2f">${res.tir.n} Ø ${res.tir.phi} mm · As,ef=${res.tir.As_ad.toFixed(2)} cm²</text>`;
+  const nCost=4,yCini=yTir+34,yCfim=cy+consH-cnom_px-8;
+  for(let i=0;i<nCost;i++){
+    const yy=yCini+(yCfim-yCini)*i/(nCost-1);
+    svg+=`<line x1="${cx+cnom_px+4}" y1="${yy}" x2="${cx+consW-cnom_px-6}" y2="${yy}" stroke="#1e8b48" stroke-width="2.5" stroke-dasharray="8,3"/>`;
+    svg+=`<line x1="${px+cnom_px+6}" y1="${yy}" x2="${cx+10}" y2="${yy}" stroke="#1e8b48" stroke-width="2.5" stroke-dasharray="8,3"/>`;
+  }
+  svg+=`<text x="${cx+40}" y="${yCini+60}" font-size="11" fill="#1e8b48" font-weight="bold">C1 — Costura (entra no pilar)</text>`;
+  for(let i=0;i<3;i++){
+    const xx=xLoad-20+i*20;
+    svg+=`<line x1="${xx}" y1="${cy+cnom_px+4}" x2="${xx}" y2="${cy+consH-cnom_px-4}" stroke="#2d6fba" stroke-width="2.5"/>`;
+  }
+  svg+=`<text x="${xLoad-45}" y="${cy+consH+22}" font-size="11" fill="#2d6fba" font-weight="bold">S1 — Suspensão</text>`;
+  svg+=`<rect x="${xLoad-30}" y="${cy-15}" width="60" height="15" fill="#f0a92a" stroke="#0d2b4e"/>`;
+  svg+=`<line x1="${xLoad}" y1="${cy-60}" x2="${xLoad}" y2="${cy-15}" stroke="#c22f2f" stroke-width="3" marker-end="url(#arrFdet)"/>`;
+  svg+=`<text x="${xLoad+8}" y="${cy-42}" font-size="13" fill="#c22f2f" font-weight="bold">Fd${res?' = '+res.Fd.toFixed(1)+' kN':''}</text>`;
+  svg+=`<line x1="${cx}" y1="${cy+consH+50}" x2="${xLoad}" y2="${cy+consH+50}" stroke="#0d2b4e"/>`;
+  svg+=`<text x="${(cx+xLoad)/2}" y="${cy+consH+68}" text-anchor="middle" font-size="11" fill="#0d2b4e">a = ${g.a} cm</text>`;
+  svg+=`<text x="${W-10}" y="${H-10}" text-anchor="end" font-size="10" fill="#8896a8">APavan Consolo — NBR 6118:2023 §22.5</text>`;
+  svg+=`<defs><marker id="arrFdet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c22f2f"/></marker></defs></svg>`;
+  document.getElementById('detSvgWrap').innerHTML=svg;
+}
+
+function renderSecSvg(){
+  const g=S.geometria,res=S.results;
+  const W=400,H=340,scale=Math.min((W-120)/g.b,(H-100)/g.h);
+  const bw=g.b*scale,hh=g.h*scale,x=(W-bw)/2,y=(H-hh)/2+10,cp=g.cnom*scale;
+  let svg=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+  svg+=`<rect width="${W}" height="${H}" fill="#fff"/>`;
+  svg+=`<rect x="${x}" y="${y}" width="${bw}" height="${hh}" fill="#f4f7fa" stroke="#0d2b4e" stroke-width="1.5"/>`;
+  const n=res?res.tir.n:4,rad=5.5,yTopo=y+cp+10;
+  for(let i=0;i<n;i++){
+    const xi=x+cp+8+(bw-2*cp-16)*i/(n-1||1);
+    svg+=`<circle cx="${xi}" cy="${yTopo}" r="${rad}" fill="#c22f2f"/>`;
+  }
+  svg+=`<text x="${x+bw/2}" y="${yTopo-16}" text-anchor="middle" font-size="10" fill="#c22f2f" font-weight="bold">T1 — Tirante (topo)</text>`;
+  svg+=`</svg>`;
+  document.getElementById('secSvgWrap').innerHTML=svg;
+}
+
+function updateMaterialsTables(){
+  const m=MATERIAIS.compute();
+  document.getElementById('matConcTable').innerHTML=`
+    <tr><th>Prop.</th><th>Valor</th><th>Un.</th></tr>
+    <tr><td>f<sub>ck</sub></td><td class="num">${m.c.fck.toFixed(1)}</td><td>MPa</td></tr>
+    <tr><td>f<sub>cd</sub></td><td class="num">${m.c.fcd.toFixed(2)}</td><td>MPa</td></tr>
+    <tr><td>f<sub>ct,m</sub></td><td class="num">${m.c.fctm.toFixed(2)}</td><td>MPa</td></tr>
+    <tr><td>E<sub>cs</sub></td><td class="num">${m.c.Ecs.toFixed(0)}</td><td>MPa</td></tr>`;
+  document.getElementById('matAcoTable').innerHTML=`
+    <tr><th>Prop.</th><th>Valor</th><th>Un.</th></tr>
+    <tr><td>Categoria</td><td>${m.a.cat}</td><td>—</td></tr>
+    <tr><td>f<sub>yk</sub></td><td class="num">${m.a.fyk.toFixed(0)}</td><td>MPa</td></tr>
+    <tr><td>f<sub>yd</sub></td><td class="num">${m.a.fyd.toFixed(2)}</td><td>MPa</td></tr>`;
+  const cv=document.getElementById('acoChart'),ctx=cv.getContext('2d'),W=cv.width,H=cv.height;
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+  const pad={l:55,r:20,t:30,b:40},fyd=m.a.fyd,Es=m.a.Es,eyd=fyd/Es*1000,emax=20;
+  ctx.strokeStyle='#5a6b7f';ctx.beginPath();
+  ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,H-pad.b);ctx.lineTo(W-pad.r,H-pad.b);ctx.stroke();
+  const sx=e=>pad.l+e/emax*(W-pad.l-pad.r),sy=s=>H-pad.b-s/(fyd*1.15)*(H-pad.t-pad.b);
+  ctx.strokeStyle='#2d6fba';ctx.lineWidth=2;ctx.beginPath();
+  for(let e=0;e<=emax;e+=0.2){
+    const s=e<=eyd?e*Es/1000:fyd;
+    e===0?ctx.moveTo(sx(e),sy(s)):ctx.lineTo(sx(e),sy(s));
+  }
+  ctx.stroke();
+  ctx.fillStyle='#c22f2f';ctx.font='10px Arial';
+  ctx.fillText('fyd='+fyd.toFixed(0)+' MPa',pad.l+6,sy(fyd)-4);
+  ctx.fillStyle='#0d2b4e';ctx.font='bold 11px Arial';
+  ctx.fillText('σ × ε — '+m.a.cat,pad.l+6,pad.t-10);
+}
+
+function renderClassif(){
+  const r=S.results,el=document.getElementById('classifResult');
+  if(!r){el.innerHTML='<div class="alert info"><span class="ic">i</span><div>Clique em CALCULAR.</div></div>';return}
+  const c=r.classif;
+  el.innerHTML=`
+    <div class="grid-3">
+      <div class="metric"><div class="lbl">a/d</div><div class="val">${c.ad.toFixed(3)}</div></div>
+      <div class="metric"><div class="lbl">Classificação</div><div class="val" style="font-size:14px">${c.tipo}</div></div>
+      <div class="metric"><div class="lbl">Modelo</div><div class="val" style="font-size:12px">${c.metodo}</div></div>
+    </div>
+    ${c.alertas.map(a=>`<div class="alert warn"><span class="ic">!</span><div>${a}</div></div>`).join('')}`;
+}
+
+function renderELU(){
+  const r=S.results;
+  if(!r){document.getElementById('eluResumo').innerHTML='<div class="alert info"><span class="ic">i</span><div>Sem cálculo.</div></div>';return}
+  document.getElementById('eluResumo').innerHTML=`
+    <div class="cards-dash">
+      <div class="dash-card"><div class="k">Fd</div><div class="v">${r.Fd.toFixed(2)} kN</div></div>
+      <div class="dash-card"><div class="k">Hd</div><div class="v">${r.Hd.toFixed(2)} kN</div></div>
+      <div class="dash-card"><div class="k">Md</div><div class="v">${r.Md.toFixed(2)} kN.m</div></div>
+      <div class="dash-card"><div class="k">Peso próprio</div><div class="v">${r.pp.toFixed(2)} kN</div></div>
+    </div>`;
+  const nos=r.nos;
+  document.getElementById('eluNos').innerHTML=`
+    <table class="res">
+      <tr><th>Nó/Biela</th><th>Tipo</th><th>σsd [MPa]</th><th>σRd [MPa]</th><th>η</th><th>Status</th></tr>
+      <tr><td>N1</td><td>CCT</td><td class="num">${r.bt.sigma_contato.toFixed(2)}</td><td class="num">${nos.fcd2.toFixed(2)}</td><td class="num">${(nos.util_contato*100).toFixed(0)}%</td><td>${nos.util_contato<1?'<span class="pill ok">OK</span>':'<span class="pill nok">NÃO OK</span>'}</td></tr>
+      <tr><td>Biela</td><td>CCT</td><td class="num">${r.bt.sigma_cd.toFixed(2)}</td><td class="num">${nos.fcd2.toFixed(2)}</td><td class="num">${(nos.util_biela*100).toFixed(0)}%</td><td>${nos.util_biela<1?'<span class="pill ok">OK</span>':'<span class="pill nok">NÃO OK</span>'}</td></tr>
+      <tr><td>N2</td><td>CCC</td><td class="num">${nos.sigma_no_inf.toFixed(2)}</td><td class="num">${nos.fcd1.toFixed(2)}</td><td class="num">${(nos.util_no_inf*100).toFixed(0)}%</td><td>${nos.util_no_inf<1?'<span class="pill ok">OK</span>':'<span class="pill nok">NÃO OK</span>'}</td></tr>
+    </table>`;
+  document.getElementById('eluTirante').innerHTML=`
+    <div class="grid-3">
+      <div class="metric"><div class="lbl">As,nec</div><div class="val">${r.tir.As_nec.toFixed(2)} cm²</div></div>
+      <div class="metric"><div class="lbl">As,min</div><div class="val">${r.tir.As_min.toFixed(2)} cm²</div></div>
+      <div class="metric"><div class="lbl">As,adot</div><div class="val">${r.tir.As_ad.toFixed(2)} cm²</div></div>
+      <div class="metric"><div class="lbl">Solução</div><div class="val" style="font-size:15px">${r.tir.n} Ø ${r.tir.phi} mm</div></div>
+      <div class="metric"><div class="lbl">η</div><div class="val">${(r.tir.As_nec/r.tir.As_ad*100).toFixed(1)}%</div></div>
+      <div class="metric"><div class="lbl">Status</div><div class="val" style="color:var(--ok)">${r.tir.As_nec<=r.tir.As_ad?'✓ OK':'✗'}</div></div>
+    </div>`;
+  document.getElementById('eluCisalha').innerHTML=`
+    <table class="res">
+      <tr><th>Verif.</th><th>Vd</th><th>VRd2</th><th>η</th><th>Status</th></tr>
+      <tr><td>Cisalhamento</td><td>${r.Fd.toFixed(2)} kN</td><td>${r.cis.VRd2.toFixed(2)} kN</td><td>${(r.Fd/r.cis.VRd2*100).toFixed(1)}%</td><td>${r.Fd<r.cis.VRd2?'<span class="pill ok">OK</span>':'<span class="pill nok">NÃO OK</span>'}</td></tr>
+    </table>`;
+  document.getElementById('eluFlexao').innerHTML=r.flex.convergiu?`
+    <table class="res">
+      <tr><td>Md</td><td>${r.flex.Md.toFixed(2)} kN.m</td></tr>
+      <tr><td>x</td><td>${r.flex.x.toFixed(2)} cm</td></tr>
+    </table>`:'<div class="alert err">Não convergiu</div>';
+  document.getElementById('eluContato').innerHTML=`
+    <table class="res">
+      <tr><td>σcontato,sd</td><td>${r.bt.sigma_contato.toFixed(2)} MPa</td></tr>
+      <tr><td>σRd</td><td>${r.nos.fcd2.toFixed(2)} MPa</td></tr>
+      <tr><td>Status</td><td>${r.bt.sigma_contato<r.nos.fcd2?'<span class="pill ok">OK</span>':'<span class="pill nok">NÃO OK</span>'}</td></tr>
+    </table>`;
+  document.getElementById('armTir').innerHTML=`<table class="res">
+    <tr><td>Solução</td><td>${r.tir.n} Ø ${r.tir.phi} mm</td></tr>
+    <tr><td>As,ef</td><td>${r.tir.As_ad.toFixed(2)} cm²</td></tr>
+    <tr><td>ρ</td><td>${(r.tir.As_ad/(S.geometria.b*S.geometria.h)*100).toFixed(3)} %</td></tr>
+    </table>`;
+  document.getElementById('armCost').innerHTML=`<table class="res">
+    <tr><td>As,cost</td><td>${r.cost.As_cost.toFixed(2)} cm²</td></tr>
+    <tr><td>Solução</td><td>${r.cost.n_est} × Ø ${r.cost.phi} (${r.cost.n_ramos} ramos)</td></tr>
+    </table>`;
+  document.getElementById('armSusp').innerHTML=`<table class="res">
+    <tr><td>As,susp</td><td>${r.susp.As_susp.toFixed(2)} cm²</td></tr>
+    <tr><td>Solução</td><td>${r.susp.n} Ø ${r.susp.phi} mm</td></tr>
+    </table>`;
+  document.getElementById('ancRes').innerHTML=`<table class="res">
+    <tr><td>lb,nec</td><td>${r.anc.lb_nec.toFixed(0)} mm</td></tr>
+    <tr><td>lb,disp</td><td>${r.anc.lb_disp.toFixed(0)} mm</td></tr>
+    <tr><td>Status</td><td>${r.anc.ok?'<span class="pill ok">OK</span>':'<span class="pill nok">NÃO OK</span>'}</td></tr>
+    </table>`;
+  document.getElementById('ancCost').innerHTML=`<table class="res">
+    <tr><td>lb,nec</td><td>${r.ancCost.lb_nec.toFixed(0)} mm</td></tr>
+    <tr><td>Status</td><td>${r.ancCost.ok?'<span class="pill ok">OK</span>':'<span class="pill nok">NÃO OK</span>'}</td></tr>
+    </table>`;
+}
+
+function renderAtrito(){
+  const r=S.results,el=document.getElementById('atritoContent');
+  if(!r){el.innerHTML='<div class="alert info"><span class="ic">i</span><div>Clique em CALCULAR para ver os resultados de atrito-cisalhamento.</div></div>';return}
+  const atr=r.atr,v=r.atrVerif;
+  const muAtual=S.atrito.mu,sigmaAtual=S.atrito.sigma,tipoAtual=S.atrito.tipo;
+  const labelMu={monolitico:'1,4 (monolítico)',junta:'1,0 (junta)',aco:'0,7 (concreto/aço)'}[tipoAtual];
+  el.innerHTML=`
+    <div class="alert info"><span class="ic">i</span><div>
+      <b>Teoria do atrito-cisalhamento (shear-friction)</b> — para consolos muito curtos (a/d ≤ 0,5):
+      <code>τu = τo + μ·(ρ·fy + σ)</code> · τo = 40 kgf/cm² ≈ 3,92 MPa.
+    </div></div>
+    <div class="section-title">Parâmetros de entrada</div>
+    <div class="grid">
+      <div>
+        <label>Tipo de interface (μ)</label>
+        <select onchange="AP.Atrito.upd('tipo',this.value)">
+          <option value="monolitico" ${tipoAtual==='monolitico'?'selected':''}>1,4 — Monolítico</option>
+          <option value="junta" ${tipoAtual==='junta'?'selected':''}>1,0 — Junta concreto/concreto</option>
+          <option value="aco" ${tipoAtual==='aco'?'selected':''}>0,7 — Concreto/aço</option>
+        </select>
+      </div>
+      <div><label>σ [MPa] (+ comp.)</label><input type="number" step="0.1" value="${sigmaAtual}" oninput="AP.Atrito.upd('sigma',parseFloat(this.value)||0)"></div>
+      <div><label>μ aplicado</label><input value="${muAtual}" readonly></div>
+    </div>
+    <div class="section-title">Verificação</div>
+    <table class="res">
+      <tr><th>Parâmetro</th><th>Valor</th><th>Unidade</th></tr>
+      <tr><td>τsd = Vd/(b·d)</td><td class="num">${atr.tau_sd.toFixed(3)}</td><td>MPa</td></tr>
+      <tr><td>τo</td><td class="num">${atr.tau_o.toFixed(2)}</td><td>MPa</td></tr>
+      <tr><td>μ</td><td class="num">${atr.mu.toFixed(2)}</td><td>—</td></tr>
+      <tr><td>σ</td><td class="num">${atr.sigma.toFixed(2)}</td><td>MPa</td></tr>
+      <tr><td>ρ = As/(b·d)</td><td class="num">${v.rho.toFixed(4)}</td><td>—</td></tr>
+      <tr><td>τu = τo + μ(ρfy+σ)</td><td class="num">${v.tau_u.toFixed(3)}</td><td>MPa</td></tr>
+      <tr style="font-weight:bold;background:#eef3fa"><td>η = τsd/τu</td><td class="num">${(v.util*100).toFixed(1)}</td><td>%</td></tr>
+    </table>
+    <div class="section-title">Armadura necessária</div>
+    <table class="res">
+      <tr><td>As,nec (atrito)</td><td>${atr.As_nec_mpa.toFixed(2)} cm²</td></tr>
+      <tr><td>As,min (0,10%·b·d)</td><td>${atr.As_min.toFixed(2)} cm²</td></tr>
+      <tr><td>As,adotada (tirante)</td><td>${r.tir.As_ad.toFixed(2)} cm²</td></tr>
+      <tr style="font-weight:bold;background:#eef3fa"><td>Status</td><td>${r.tir.As_ad>=atr.As_nec_mpa?'<span class="pill ok">ATENDE</span>':'<span class="pill nok">INSUFICIENTE</span>'}</td></tr>
+    </table>
+    <div class="section-title">Substituição numérica</div>
+    <div class="formula">τsd = Vd/(b·d) = ${r.Fd.toFixed(2)}·10/(${S.geometria.b}·${S.geometria.d}) = <span class="res">${atr.tau_sd.toFixed(3)} MPa</span>
+τo = <span class="res">${atr.tau_o.toFixed(2)}</span>  μ = <span class="res">${atr.mu.toFixed(2)}</span>  σ = <span class="res">${atr.sigma.toFixed(2)}</span>
+ρ = As/(b·d) = <span class="res">${v.rho.toFixed(4)}</span>
+τu = ${atr.tau_o.toFixed(2)} + ${atr.mu.toFixed(2)}·(${v.rho.toFixed(4)}·${r.mat.a.fyd.toFixed(2)} + ${atr.sigma.toFixed(2)}) = <span class="res">${v.tau_u.toFixed(3)} MPa</span>
+η = <span class="res">${(v.util*100).toFixed(1)}%</span>  ${v.ok?'✓ OK':'✗ NÃO OK'}</div>
+    <div class="alert warn" style="margin-top:12px"><span class="ic">!</span><div>
+      <b>Nota:</b> shear-friction é modelo alternativo. NBR 6118:2023 §22.5 recomenda biela-tirante
+      para consolos curtos e admite atrito-cisalhamento para a/d ≤ 0,5.
+    </div></div>`;
+}
+
+function renderELS(){
+  const r=S.results;
+  if(!r){document.getElementById('elsResumo').innerHTML='<div class="alert info">Sem cálculo.</div>';return}
+  document.getElementById('elsResumo').innerHTML=`
+    <table class="res">
+      <tr><th>Combinação</th><th>Fd [kN]</th><th>Hd [kN]</th></tr>
+      <tr><td>QP</td><td>${r.comb.ELS_qp.Fd.toFixed(2)}</td><td>${r.comb.ELS_qp.Hd.toFixed(2)}</td></tr>
+      <tr><td>Frequente</td><td>${r.comb.ELS_freq.Fd.toFixed(2)}</td><td>${r.comb.ELS_freq.Hd.toFixed(2)}</td></tr>
+      <tr><td>Rara</td><td>${r.comb.ELS_rara.Fd.toFixed(2)}</td><td>${r.comb.ELS_rara.Hd.toFixed(2)}</td></tr>
+    </table>`;
+  const f=r.elsf;
+  document.getElementById('elsFlecha').innerHTML=`
+    <table class="res">
+      <tr><td>δ imediato</td><td>${f.delta.toFixed(2)} mm</td></tr>
+      <tr><td>δ longa duração</td><td>${f.delta_long.toFixed(2)} mm</td></tr>
+      <tr><td>δ total</td><td>${f.delta_total.toFixed(2)} mm</td></tr>
+      <tr><td>Limite</td><td>${(S.geometria.a*100/250).toFixed(2)} mm</td></tr>
+    </table>`;
+  document.getElementById('elsFissura').innerHTML=`<table class="res"><tr><td>CAA ${S.geometria.caa}</td><td>wk ≤ ${({I:0.4,II:0.3,III:0.3,IV:0.2})[S.geometria.caa]} mm</td></tr></table>`;
+  const cv=document.getElementById('chartFlecha');
+  if(cv){
+    const data=[],L=S.geometria.a;
+    for(let i=0;i<=20;i++){
+      const x=L*i/20,F=r.comb.ELS_freq.Fd,Ecs_kNcm2=r.elsf.Ecs*0.1,I=r.elsf.Ieq;
+      const d=(F/(6*Ecs_kNcm2*I))*(3*L*x*x-Math.pow(x,3))*10;
+      data.push({x,y:d});
+    }
+    makeChart(cv,data,{xlabel:'x (cm)',ylabel:'δ (mm)',title:'δ(x)',color:'#2d6fba',dec:2});
+  }
+}
+
+function renderCharts(){
+  const r=S.results;if(!r)return;
+  const g=S.geometria,L=g.a+5;
+  const dataM=[],dataV=[];
+  for(let i=0;i<=20;i++){
+    const x=L*i/20;
+    dataM.push({x,y:x<g.a?r.Fd*(g.a-x)/100:0});
+    dataV.push({x,y:x<g.a?r.Fd:0});
+  }
+  makeChart(document.getElementById('chartM'),dataM,{xlabel:'x (cm)',ylabel:'M (kN.m)',title:'M(x)',color:'#2d6fba',dec:2});
+  makeChart(document.getElementById('chartV'),dataV,{xlabel:'x (cm)',ylabel:'V (kN)',title:'V(x)',color:'#c22f2f',dec:1});
+  document.getElementById('mInfo').textContent='Mmax = '+(r.Fd*g.a/100).toFixed(2)+' kN.m';
+  document.getElementById('vInfo').textContent='Vmax = '+r.Fd.toFixed(2)+' kN';
+  const cvE=document.getElementById('chartEta');
+  if(cvE&&r.verifs){
+    const ctx=cvE.getContext('2d'),W=cvE.width,H=cvE.height;
+    ctx.clearRect(0,0,W,H);ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+    const pad={l:140,r:20,t:30,b:30},rowH=(H-pad.t-pad.b)/r.verifs.length;
+    r.verifs.forEach((v,i)=>{
+      const y=pad.t+i*rowH+rowH*0.15,h=rowH*0.7,w=(W-pad.l-pad.r)*Math.min(v.eta,1.5)/1.5;
+      ctx.fillStyle=v.eta<0.85?'#1e8b48':(v.eta<1?'#d68b00':'#c22f2f');
+      ctx.fillRect(pad.l,y,w,h);
+      ctx.fillStyle='#0d2b4e';ctx.font='10px Arial';ctx.textAlign='right';
+      ctx.fillText(v.nome,pad.l-6,y+h*0.7);
+      ctx.textAlign='left';ctx.fillStyle='#fff';ctx.font='bold 10px Arial';
+      if(w>40)ctx.fillText((v.eta*100).toFixed(0)+'%',pad.l+6,y+h*0.7);
+    });
+  }
+  const cvF=document.getElementById('chartDelta');
+  if(cvF){
+    const data=[],L=g.a;
+    for(let i=0;i<=20;i++){
+      const x=L*i/20,F=r.comb.ELS_freq.Fd,Ecs_kNcm2=r.elsf.Ecs*0.1,I=r.elsf.Ieq;
+      const d=(F/(6*Ecs_kNcm2*I))*(3*L*x*x-Math.pow(x,3))*10;
+      data.push({x,y:d});
+    }
+    makeChart(cvF,data,{xlabel:'x (cm)',ylabel:'δ (mm)',title:'δ(x)',color:'#2d6fba',dec:2});
+  }
+  renderDetSvg();renderSecSvg();
+}
+
+function renderQuant(){
+  const r=S.results;if(!r){document.getElementById('quantRes').innerHTML='Sem cálculo.';return}
+  const g=S.geometria;
+  const peso=(phi,ct)=>{const A=Math.PI*Math.pow(phi/10,2)/4;return A*0.785*(ct/100)};
+  const ct_tir=(g.L+10+30)*r.tir.n;
+  const ct_cost=(2*(g.b-2*g.cnom)+2*(g.h*2/3-2*g.cnom)+20)*r.cost.n_est;
+  const ct_susp=(g.h+30)*r.susp.n;
+  const Vc=(g.b/100)*(g.h/100)*(g.L/100);
+  document.getElementById('quantRes').innerHTML=`
+    <table class="res">
+      <tr><th>Item</th><th>Ø</th><th>Qtd</th><th>Comp.total [cm]</th><th>Peso [kg]</th></tr>
+      <tr><td>T1</td><td>${r.tir.phi}</td><td>${r.tir.n}</td><td>${ct_tir.toFixed(1)}</td><td>${peso(r.tir.phi,ct_tir).toFixed(2)}</td></tr>
+      <tr><td>C1</td><td>${r.cost.phi}</td><td>${r.cost.n_est}</td><td>${ct_cost.toFixed(1)}</td><td>${peso(r.cost.phi,ct_cost).toFixed(2)}</td></tr>
+      <tr><td>S1</td><td>${r.susp.phi}</td><td>${r.susp.n}</td><td>${ct_susp.toFixed(1)}</td><td>${peso(r.susp.phi,ct_susp).toFixed(2)}</td></tr>
+      <tr style="font-weight:bold;background:#eef3fa"><td colspan="4">Total</td><td>${(peso(r.tir.phi,ct_tir)+peso(r.cost.phi,ct_cost)+peso(r.susp.phi,ct_susp)).toFixed(2)} kg</td></tr>
+      <tr><td colspan="4">Concreto</td><td>${Vc.toFixed(4)} m³</td></tr>
+    </table>`;
+}
+
+function renderComparison(){
+  const r=S.results,el=document.getElementById('compContent');
+  if(!el)return;
+  if(!r){el.innerHTML='<div class="alert info"><span class="ic">i</span><div>Execute o cálculo primeiro.</div></div>';return}
+  const sim=r.sim,v=r.atrVerif,atr=r.atr;
+  el.innerHTML=`
+    <div class="alert info"><span class="ic">i</span><div>Comparação entre <b>3 modelos</b>: biela-tirante (NBR), simplificado (biela única) e atrito-cisalhamento (shear-friction).</div></div>
+    <div class="section-title">1. Biela-tirante × Simplificado</div>
+    <table class="res">
+      <tr><th>Parâmetro</th><th>Simplificado</th><th>NBR 6118:2023</th></tr>
+      <tr><td>z</td><td class="num">${sim.d_ef.toFixed(2)} (0,80d)</td><td class="num">${r.bt.z.toFixed(2)} (0,85d)</td></tr>
+      <tr><td>θ</td><td class="num">${sim.alpha_deg.toFixed(2)}°</td><td class="num">${r.bt.theta_deg.toFixed(2)}°</td></tr>
+      <tr><td>σ biela</td><td class="num">${sim.sigma_biela.toFixed(2)} MPa</td><td class="num">${r.bt.sigma_cd.toFixed(2)} MPa</td></tr>
+      <tr><td>Tirante</td><td class="num">${sim.T.toFixed(2)} kN</td><td class="num">${r.bt.Rsd.toFixed(2)} kN</td></tr>
+      <tr><td>Biela</td><td class="num">${sim.C.toFixed(2)} kN</td><td class="num">${r.bt.Rcd.toFixed(2)} kN</td></tr>
+    </table>
+    <div class="section-title">2. Atrito-cisalhamento</div>
+    <table class="res">
+      <tr><th>Parâmetro</th><th>Valor</th><th>Unidade</th></tr>
+      <tr><td>τsd</td><td class="num">${atr.tau_sd.toFixed(3)}</td><td>MPa</td></tr>
+      <tr><td>τo</td><td class="num">${atr.tau_o.toFixed(2)}</td><td>MPa</td></tr>
+      <tr><td>μ</td><td class="num">${atr.mu.toFixed(2)}</td><td>—</td></tr>
+      <tr><td>σ</td><td class="num">${atr.sigma.toFixed(2)}</td><td>MPa</td></tr>
+      <tr><td>ρ</td><td class="num">${v.rho.toFixed(4)}</td><td>—</td></tr>
+      <tr><td>τu</td><td class="num">${v.tau_u.toFixed(3)}</td><td>MPa</td></tr>
+      <tr style="font-weight:bold"><td>η</td><td class="num">${(v.util*100).toFixed(1)}%</td><td>${v.ok?'OK':'NÃO OK'}</td></tr>
+    </table>
+    <div class="section-title">3. As por modelo</div>
+    <table class="res">
+      <tr><th>Modelo</th><th>As [cm²]</th><th>Fórmula</th></tr>
+      <tr><td>Biela-tirante</td><td class="num">${r.tir.As_nec.toFixed(2)}</td><td>Rsd/fyd</td></tr>
+      <tr><td>Simplificado</td><td class="num">${(sim.T*10/r.mat.a.fyd).toFixed(2)}</td><td>P·tgα/fyd</td></tr>
+      <tr><td>Atrito-cis.</td><td class="num">${atr.As_nec_mpa.toFixed(2)}</td><td>(τsd−τo)/μ−σ)·b·d/fyd</td></tr>
+      <tr style="font-weight:bold;background:#eef3fa"><td colspan="3">Adotado: ${r.tir.As_ad.toFixed(2)} cm² (${r.tir.n} Ø ${r.tir.phi} mm)</td></tr>
+    </table>
+    <div class="section-title">4. Quando usar cada modelo</div>
+    <div class="alert ok"><span class="ic">✓</span><div>
+      <ul style="margin-left:18px">
+        <li><b>Biela-tirante</b> (NBR 6118:2023 §22.5): 0,5 &lt; a/d ≤ 1,0</li>
+        <li><b>Atrito-cisalhamento</b>: a/d ≤ 0,5</li>
+        <li><b>Simplificado</b>: pré-dimensionamento</li>
+      </ul>
+    </div></div>`;
+}
+
+const Atrito = {
+  upd(k,v){
+    S.atrito[k]=v;
+    if(S.results){S.results=runCalc();renderAtrito();renderComparison();}
+  }
+};
+
+const Memo = {
+  generate(){
+    const r=S.results;if(!r){alert('Calcule primeiro.');return}
+    const g=S.geometria;
+    let s=`<div style="text-align:center;border-bottom:2px solid var(--azul);padding-bottom:12px;margin-bottom:16px">
+      <img src="${LOGO_FILE}" alt="APavan" style="max-width:120px;margin-bottom:8px" onerror="this.style.display='none'">
+      <div style="font-size:11px;letter-spacing:3px;color:var(--azul3);font-weight:700">APAVAN ENGENHARIA E CONSULTORIA</div>
+      <div style="font-size:18px;font-weight:800;color:var(--azul);margin-top:4px">MEMÓRIA DE CÁLCULO</div>
+      <div style="font-size:13px;color:var(--cinza)">Consolo de Concreto Armado — NBR 6118:2023</div>
+    </div>`;
+    s+=`<h3>1. Materiais</h3><table class="res"><tr><td>fck</td><td>${r.mat.c.fck.toFixed(1)} MPa</td></tr><tr><td>fcd</td><td>${r.mat.c.fcd.toFixed(2)} MPa</td></tr><tr><td>Aço</td><td>${r.mat.a.cat} (fyd=${r.mat.a.fyd.toFixed(2)} MPa)</td></tr></table>`;
+    s+=`<h3>2. Geometria</h3><table class="res"><tr><td>b×h×L</td><td>${g.b}×${g.h}×${g.L} cm</td></tr><tr><td>a</td><td>${g.a} cm</td></tr><tr><td>d</td><td>${g.d} cm</td></tr><tr><td>a/d</td><td>${r.classif.ad.toFixed(3)} (${r.classif.tipo})</td></tr></table>`;
+    s+=`<h3>3. Cargas</h3><table class="res"><tr><td>Fd</td><td>${r.Fd.toFixed(2)} kN</td></tr><tr><td>Hd</td><td>${r.Hd.toFixed(2)} kN</td></tr><tr><td>Md</td><td>${r.Md.toFixed(2)} kN.m</td></tr></table>`;
+    s+=`<h3>4. Modelo Biela-Tirante</h3><div class="formula">z = 0.85·d = ${r.bt.z.toFixed(2)} cm
+θ = atan(z/a) = ${r.bt.theta_deg.toFixed(2)}°
+Rcd = Fd/sinθ = ${r.bt.Rcd.toFixed(2)} kN
+Rsd = Fd/tanθ + Hd = ${r.bt.Rsd.toFixed(2)} kN</div>`;
+    s+=`<h3>5. Atrito-Cisalhamento (Shear-Friction)</h3>
+      <div class="formula">τsd = Vd/(b·d) = ${r.atr.tau_sd.toFixed(3)} MPa
+τo = ${r.atr.tau_o.toFixed(2)} MPa  μ = ${r.atr.mu.toFixed(2)}  σ = ${r.atr.sigma.toFixed(2)} MPa
+ρ = As/(b·d) = ${r.atrVerif.rho.toFixed(4)}
+τu = τo + μ(ρ·fy + σ) = ${r.atrVerif.tau_u.toFixed(3)} MPa
+η = ${(r.atrVerif.util*100).toFixed(1)}% → ${r.atrVerif.ok?'OK':'NÃO OK'}
+As,nec (atrito) = ${r.atr.As_nec_mpa.toFixed(2)} cm²</div>`;
+    s+=`<h3>6. Tirante / Costura / Suspensão</h3><div class="formula">As,tir = ${r.tir.As_nec.toFixed(2)} cm² → ${r.tir.n} Ø ${r.tir.phi} mm
+As,cost = ${r.cost.As_cost.toFixed(2)} cm² → ${r.cost.n_est} × Ø ${r.cost.phi}
+As,susp = ${r.susp.As_susp.toFixed(2)} cm² → ${r.susp.n} Ø ${r.susp.phi}</div>`;
+    s+=`<h3>7. Verificações</h3>
+      <table class="res"><tr><th>Verificação</th><th>η</th><th>Status</th></tr>
+      ${r.verifs.map(v=>`<tr><td>${v.nome}</td><td>${(v.eta*100).toFixed(1)}%</td><td>${v.ok?'<span class="pill ok">OK</span>':'<span class="pill nok">NÃO OK</span>'}</td></tr>`).join('')}
+      </table>`;
+    s+=`<h3>8. Quantitativos</h3>${document.getElementById('quantRes')?.innerHTML||''}`;
+    s+=`<div class="alert warn" style="margin-top:16px"><span class="ic">!</span><div>Ferramenta de apoio. Validar por profissional legalmente habilitado.</div></div>`;
+    s+=`<div class="foot-note">APAVAN ENGENHARIA E CONSULTORIA · Tubarão — SC</div>`;
+    document.getElementById('memoOut').innerHTML=s;
+  }
+};
+
+const Export = {
+  json(){const b=new Blob([JSON.stringify({state:S,results:S.results},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='apavan_consolo_'+Date.now()+'.json';a.click()},
+  csv(){const r=S.results;if(!r){alert('Calcule primeiro');return}const rows=[['Verificação','η','Status','Norma']];
+    r.verifs.forEach(v=>rows.push([v.nome,(v.eta*100).toFixed(1)+'%',v.ok?'OK':'NÃO OK',v.norma]));
+    const csv=rows.map(x=>x.join(';')).join('\n');
+    const b=new Blob([csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='apavan_verificacoes.csv';a.click()}
+};
+
+const Recalc = {
+  run(){
+    try{
+      const res=runCalc();S.results=res;
+      renderClassif();renderELU();renderELS();renderBTSvg();renderGeomSvg();
+      renderCharts();renderQuant();renderDetSvg();renderSecSvg();
+      renderAtrito();renderComparison();
+      document.querySelector('button[data-tab="elu"]').click();
+    }catch(e){alert('Erro: '+e.message);console.error(e)}
+  },
+  viewResults(){if(!S.results){this.run();return}document.querySelector('button[data-tab="elu"]').click()},
+  optimize(){
+    const r=S.results;if(!r){alert('Calcule primeiro');return}
+    const bitolas=[10,12.5,16,20,25,32];const out=[];
+    const g=S.geometria,fyd=r.mat.a.fyd;
+    for(const phi of bitolas){
+      const A1=Math.PI*Math.pow(phi/10,2)/4;
+      for(let n=2;n<=12;n++){
+        const As=n*A1;
+        if(As<r.tir.As_req)continue;
+        const esp=(g.b-2*g.cnom)/(n-1);
+        if(esp<Math.max(2,phi/10*1.2)||esp>30)continue;
+        const anc=ANCORAGEM.compute(phi,r.mat.c.fck,fyd,r.tir.As_nec,As,'reta',g.cnom,g.d,g.b,g.a);
+        if(!anc.ok)continue;
+        out.push({phi,n,As,esp,anc});
+      }
+    }
+    out.sort((a,b)=>a.As-b.As);
+    if(!out.length){document.getElementById('optResult').innerHTML='<div class="alert err">Nenhuma solução</div>';return}
+    const b=out[0];
+    document.getElementById('optResult').innerHTML=`
+      <div class="alert ok"><span class="ic">✓</span><div><b>${b.n} Ø ${b.phi} mm = ${b.As.toFixed(2)} cm²</b> (e=${b.esp.toFixed(1)} cm)</div></div>`;
+  }
+};
+
+const Valid = {
+  run(){
+    const out=[];
+    const t=(n,c)=>out.push({n,ok:c});
+    const bak=JSON.parse(JSON.stringify(S.geometria));
+    S.geometria.a=15;S.geometria.d=50;t('a/d=0.30 → muito curto',GEOMETRIA.classify().tipo.includes('muito curto'));
+    S.geometria.a=30;S.geometria.d=50;t('a/d=0.60 → curto',GEOMETRIA.classify().tipo.includes('curto'));
+    S.geometria=bak;
+    const m=MATERIAIS.compute();
+    t('fcd=fck/1.4',Math.abs(m.c.fcd-m.c.fck/1.4)<1e-6);
+    const bt=BIELAS_TIRANTES.compute(100,0,15,50,30,{l:20});
+    t('Rcd=Fd/sinθ',Math.abs(bt.Rcd-100/bt.sin_t)<1e-6);
+    const f=ELS.computeFlecha(50,15,50,30,55,30,210000,5,2.5);
+    t('ELS calcula',!isNaN(f.delta)&&f.Ieq>0);
+    const sim=SIMPLIFICADO.compute(100,30,50,15,20);
+    t('Simplificado calcula',sim.sigma_biela>0);
+    const atr=ATRITO_CISALHAMENTO.compute(100,30,50,500/1.15,1.4,0);
+    t('Atrito-cis. calcula',atr.tau_sd>0&&atr.tau_o>0);
+    const ver=ATRITO_CISALHAMENTO.verificar(100,30,50,5,500/1.15,1.4,0);
+    t('Atrito-cis. verifica',ver.tau_u>0);
+    const nOK=out.filter(o=>o.ok).length;
+    document.getElementById('validOut').innerHTML=`
+      <div class="alert ${nOK===out.length?'ok':'warn'}"><span class="ic">${nOK===out.length?'✓':'!'}</span><div>${nOK}/${out.length} testes OK</div></div>
+      <table class="res"><tr><th>Teste</th><th>Status</th></tr>
+      ${out.map(o=>`<tr><td>${o.n}</td><td>${o.ok?'<span class="pill ok">OK</span>':'<span class="pill nok">FALHA</span>'}</td></tr>`).join('')}
+      </table>`;
+  }
+};
+
+function initPWA(){
+  if(location.protocol==='file:')return;
+  try{
+    const base=location.href.replace(/[^/]*$/,'');
+    const m={name:"APavan Consolo",short_name:"APavan Consolo",description:"Consolo NBR 6118:2023 + Shear-Friction",start_url:location.href,scope:base,display:"standalone",background_color:"#0a1a3a",theme_color:"#0d2b4e",
+      icons:[
+        {src:LOGO_FILE,sizes:"192x192",type:"image/png",purpose:"any maskable"},
+        {src:LOGO_FILE,sizes:"512x512",type:"image/png",purpose:"any maskable"}
+      ]};
+    const l=document.createElement('link');l.rel='manifest';l.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(m));document.head.appendChild(l);
+  }catch(e){}
+}
+
+function init(){
+  injectLogoAssets();
+  bindAllInputs();
+  initTabs();
+  Loads.render();
+  const pd=document.getElementById('p_data');pd.value=new Date().toISOString().slice(0,10);
+  S.projeto.data=pd.value;S.projeto.nome=document.getElementById('p_nome').value;
+  S.projeto.resp=document.getElementById('p_resp').value;S.projeto.local=document.getElementById('p_local').value;
+  try{const c=localStorage.getItem('apavan_consolo_current');if(c){Object.assign(S,JSON.parse(c));Project.syncUI()}}catch(e){}
+  updateMaterialsTables();renderGeomSvg();renderClassif();renderBTSvg();renderDetSvg();renderSecSvg();
+  Project.renderList();
+  window.addEventListener('beforeunload',()=>{try{localStorage.setItem('apavan_consolo_current',JSON.stringify(S))}catch(e){}});
+  initPWA();
+}
+document.addEventListener('DOMContentLoaded',init);
+
+return {S,NORMAS,MATERIAIS,GEOMETRIA,CARGAS,COMBINACOES,BIELAS_TIRANTES,ATRITO_CISALHAMENTO,TIRANTE,NOS,COSTURA,SUSPENSAO,ANCORAGEM,CISALHAMENTO,FLEXAO,ELS,SIMPLIFICADO,Project,Loads,Recalc,Atrito,Charts:{exportAllPNG(){['acoChart','chartM','chartV','chartEta','chartFlecha','chartDelta'].forEach((id,i)=>{const c=document.getElementById(id);if(!c)return;setTimeout(()=>{const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='apavan_'+id+'.png';a.click()},i*250)})}},Memo,Export,Valid,runCalc};
+
+})();
+window.AP = AP;
 </script>
-</head>
-<body class="bg-main">
-    <div class="absolute inset-0 bg-black/70 backdrop-brightness-50 pointer-events-none"></div>
-
-    <div class="relative min-h-screen w-full flex flex-col items-center justify-start py-8 px-4">
-        <!-- Main Card Container -->
-        <main id="main-content" class="w-full max-w-md glass rounded-[2.5rem] p-8 shadow-2xl opacity-0 translate-y-10 transition-all duration-700">
-            
-            <!-- Profile Header -->
-            <div class="flex flex-col items-center text-center mb-8">
-                <div class="relative mb-4 group">
-                    <div class="absolute -inset-1 bg-premiumGold rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative w-32 h-32 rounded-full border-4 border-premiumGold overflow-hidden shadow-xl bg-neutral-800">
-                        <img src="foto" alt="Ademilton Pavan" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <h1 class="text-2xl font-bold text-white mb-1 tracking-tight">Ademilton Pavan</h1>
-                <h2 class="text-[11px] font-semibold text-premiumGold uppercase tracking-[0.2em] mb-3">Corretor de Imóveis CRECI-SC 72451</h2>
-                <p class="text-white/80 text-sm font-light leading-relaxed max-w-[80%] italic">
-                    "Transformando sonhos em endereços exclusivos."
-                </p>
-            </div>
-
-            <!-- Action Grid -->
-            <div class="grid grid-cols-2 gap-4">
-                <a href="https://api.whatsapp.com/send?phone=5548999862981" target="_blank" class="group flex flex-col items-center justify-center p-4 rounded-3xl bg-white/5 border border-white/10 transition-all active:scale-95">
-                    <div class="w-12 h-12 flex items-center justify-center rounded-2xl mb-2 bg-[#25D366] shadow-lg">
-                        <i class="fa-brands fa-whatsapp text-white text-xl"></i>
-                    </div>
-                    <span class="text-[10px] font-bold text-white/90 uppercase tracking-wider">WhatsApp</span>
-                </a>
-                <a href="https://maps.app.goo.gl/6znCJWxwKk97GeS88" target="_blank" class="group flex flex-col items-center justify-center p-4 rounded-3xl bg-white/5 border border-white/10 transition-all active:scale-95">
-                    <div class="w-12 h-12 flex items-center justify-center rounded-2xl mb-2 bg-[#4285F4] shadow-lg">
-                        <i class="fa-solid fa-location-dot text-white text-xl"></i>
-                    </div>
-                    <span class="text-[10px] font-bold text-white/90 uppercase tracking-wider">Localização</span>
-                </a>
-                <a href="mailto:apavaneng@gmail.com" class="group flex flex-col items-center justify-center p-4 rounded-3xl bg-white/5 border border-white/10 transition-all active:scale-95">
-                    <div class="w-12 h-12 flex items-center justify-center rounded-2xl mb-2 bg-[#EA4335] shadow-lg">
-                        <i class="fa-solid fa-envelope text-white text-xl"></i>
-                    </div>
-                    <span class="text-[10px] font-bold text-white/90 uppercase tracking-wider">E-mail</span>
-                </a>
-                <a href="#" class="group flex flex-col items-center justify-center p-4 rounded-3xl bg-white/5 border border-white/10 transition-all active:scale-95">
-                    <div class="w-12 h-12 flex items-center justify-center rounded-2xl mb-2 bg-[#D4AF37] shadow-lg">
-                        <i class="fa-solid fa-globe text-white text-xl"></i>
-                    </div>
-                    <span class="text-[10px] font-bold text-white/90 uppercase tracking-wider">Portfolio</span>
-                </a>
-            </div>
-
-            <!-- Save Contact Button -->
-            <button onclick="saveContact()" class="w-full mt-6 mb-8 py-4 bg-premiumGold text-black font-black rounded-2xl flex items-center justify-center gap-3 transition-all active:scale-95 shadow-lg shadow-premiumGold/20 text-xs tracking-widest uppercase">
-                <i class="fa-solid fa-address-book text-lg"></i>
-                SALVAR NA AGENDA
-            </button>
-
-            <!-- Properties Header -->
-            <div class="flex justify-between items-center px-2">
-                <h3 class="text-[10px] font-bold text-premiumGold uppercase tracking-[0.25em] flex items-center gap-2">
-                    <span class="w-6 h-[1px] bg-premiumGold/30"></span>
-                    Oportunidades
-                </h3>
-                <button onclick="toggleAddForm(true)" class="text-[10px] bg-white/10 hover:bg-premiumGold hover:text-black text-white px-3 py-1.5 rounded-full transition-all flex items-center gap-2 border border-white/10">
-                    <i class="fa-solid fa-plus"></i> Inserir Imóvel
-                </button>
-            </div>
-
-            <!-- Properties List Container -->
-            <div id="properties-list" class="space-y-6 mt-4">
-                <!-- Injected via JS -->
-            </div>
-
-            <!-- Social Footer -->
-            <div class="mt-8 flex flex-col items-center gap-6">
-                <div class="flex gap-6">
-                    <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white/60 hover:text-premiumGold transition-all"><i class="fa-brands fa-instagram text-lg"></i></a>
-                    <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white/60 hover:text-premiumGold transition-all"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
-                    <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 text-white/60 hover:text-premiumGold transition-all"><i class="fa-brands fa-facebook-f text-lg"></i></a>
-                </div>
-                <button onclick="resetApp()" class="text-[9px] text-white/20 uppercase tracking-[0.2em] font-bold hover:text-red-500/50 transition-colors">
-                    <i class="fa-solid fa-rotate-left mr-2"></i> Limpar Memória do App
-                </button>
-            </div>
-        </main>
-
-        <p class="mt-8 text-white/40 text-[9px] font-light tracking-widest uppercase text-center">
-            © 2024 Ademilton Pavan • Todos os Direitos Reservados
-        </p>
-    </div>
-
-    <!-- Modals Section -->
-    
-    <!-- Add Property Modal -->
-    <div id="modal-add" class="fixed inset-0 z-[150] hidden items-center justify-center p-4 animate-fade-in">
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" onclick="toggleAddForm(false)"></div>
-        <div class="relative w-full max-w-lg glass rounded-[2.5rem] p-8 shadow-2xl border border-white/20 overflow-y-auto max-h-[90vh] no-scrollbar">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-xl font-bold text-premiumGold flex items-center gap-2 uppercase tracking-tighter">
-                    <i class="fa-solid fa-house-medical"></i> Novo Imóvel
-                </h2>
-                <button onclick="toggleAddForm(false)" class="text-white/40 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-            </div>
-
-            <form id="property-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
-                <div class="grid grid-cols-3 gap-2" id="type-selector">
-                    <button type="button" onclick="selectType('Casa')" data-type="Casa" class="type-btn py-3 rounded-xl text-[10px] font-black uppercase tracking-widest border border-premiumGold bg-premiumGold text-black transition-all">Casa</button>
-                    <button type="button" onclick="selectType('Apartamento')" data-type="Apartamento" class="type-btn py-3 rounded-xl text-[10px] font-black uppercase tracking-widest border border-white/10 bg-white/5 text-white/40 transition-all">Apto</button>
-                    <button type="button" onclick="selectType('Terreno')" data-type="Terreno" class="type-btn py-3 rounded-xl text-[10px] font-black uppercase tracking-widest border border-white/10 bg-white/5 text-white/40 transition-all">Lote/Sala</button>
-                </div>
-
-                <div class="space-y-1">
-                    <label class="text-[9px] text-white/40 uppercase font-black ml-1 tracking-widest">Título do Imóvel</label>
-                    <input id="f-name" required class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white text-sm" placeholder="Ex: Mansão Vista Mar">
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="space-y-1">
-                        <label class="text-[9px] text-white/40 uppercase font-black ml-1 tracking-widest">Privativa</label>
-                        <input id="f-areaP" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm" placeholder="450m²">
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-[9px] text-white/40 uppercase font-black ml-1 tracking-widest">Total</label>
-                        <input id="f-areaT" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm" placeholder="600m²">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2">
-                    <div class="space-y-1 text-center">
-                        <label class="text-[9px] text-white/40 uppercase font-black tracking-widest block">Dorms</label>
-                        <input id="f-bed" class="w-full bg-white/5 border border-white/10 rounded-xl px-2 py-3 text-white text-sm text-center" placeholder="0">
-                    </div>
-                    <div class="space-y-1 text-center">
-                        <label class="text-[9px] text-white/40 uppercase font-black tracking-widest block">Banheiros</label>
-                        <input id="f-bath" class="w-full bg-white/5 border border-white/10 rounded-xl px-2 py-3 text-white text-sm text-center" placeholder="0">
-                    </div>
-                    <div class="space-y-1 text-center">
-                        <label class="text-[9px] text-white/40 uppercase font-black tracking-widest block">Vagas</label>
-                        <input id="f-park" class="w-full bg-white/5 border border-white/10 rounded-xl px-2 py-3 text-white text-sm text-center" placeholder="0">
-                    </div>
-                </div>
-
-                <div class="space-y-2">
-                    <label class="text-[9px] text-white/40 uppercase font-black ml-1 tracking-widest">Fotos (Anexe pelo menos 1)</label>
-                    <div class="relative w-full min-h-[80px] border-2 border-dashed border-white/10 rounded-2xl flex flex-col items-center justify-center transition-all hover:bg-white/5">
-                        <input type="file" id="f-photos" multiple accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-10">
-                        <div id="photo-preview" class="p-2 w-full grid grid-cols-4 gap-2 text-[10px] text-white/30 text-center uppercase font-bold">Selecionar Fotos</div>
-                    </div>
-                </div>
-
-                <div class="space-y-1">
-                    <label class="text-[9px] text-white/40 uppercase font-black ml-1 tracking-widest">Vídeo Tour (Opcional)</label>
-                    <input type="file" id="f-video" accept="video/*" class="w-full text-[10px] file:bg-white/10 file:border-none file:text-white file:rounded-lg file:px-4 file:py-2 text-white/40">
-                </div>
-
-                <button type="submit" id="submit-btn" class="w-full py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] bg-premiumGold text-black shadow-2xl transition-all active:scale-95">
-                    Salvar e Publicar
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Details Modal -->
-    <div id="modal-details" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 animate-fade-in">
-        <div class="absolute inset-0 bg-black/95 backdrop-blur-2xl" onclick="closeDetails()"></div>
-        <div id="details-content" class="relative w-full max-w-lg glass rounded-[2.5rem] p-6 max-h-[90vh] overflow-y-auto shadow-2xl border border-white/20 animate-slide-up no-scrollbar">
-            <!-- Injected via JS -->
-        </div>
-    </div>
-
-    <!-- Fullscreen Image View -->
-    <div id="fullscreen-view" class="fixed inset-0 z-[200] hidden flex-col items-center justify-center bg-black/98 p-4 backdrop-blur-xl animate-fade-in" onclick="this.classList.add('hidden')">
-        <img id="fullscreen-img" src="" class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border border-white/10">
-        <p class="mt-8 text-white/50 text-[10px] font-black uppercase tracking-[0.5em]">Toque para fechar</p>
-    </div>
-
-    <script>
-        // --- ESTADO DA APLICAÇÃO ---
-        let properties = [];
-        let selectedProperty = null;
-        let currentType = 'Casa';
-        let tempImages = [];
-        let tempVideo = null;
-        let deleteConfirmations = {};
-
-        // --- INICIALIZAÇÃO ---
-        window.addEventListener('DOMContentLoaded', () => {
-            const mainContent = document.getElementById('main-content');
-            mainContent.classList.remove('opacity-0', 'translate-y-10');
-            
-            const saved = localStorage.getItem('pavan_properties_v2');
-            if (saved) {
-                properties = JSON.parse(saved);
-            } else {
-                properties = [{
-                    id: 'default-1',
-                    type: 'Casa',
-                    name: 'Mansão Horizon - Jardins',
-                    mainImage: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=600',
-                    gallery: [
-                        "https://images.unsplash.com/photo-1600607687940-c52af036999b?auto=format&fit=crop&q=80&w=800",
-                        "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=800"
-                    ],
-                    video: "https://assets.mixkit.co/videos/preview/mixkit-modern-luxury-home-interior-4404-large.mp4",
-                    areaPrivativa: '850m²',
-                    areaTotal: '1.200m²',
-                    bedrooms: '05',
-                    bathrooms: '06',
-                    parking: '08'
-                }];
-            }
-            renderProperties();
-        });
-
-        // --- RENDERIZAÇÃO ---
-        function renderProperties() {
-            const list = document.getElementById('properties-list');
-            list.innerHTML = '';
-
-            if (properties.length === 0) {
-                list.innerHTML = `
-                    <div class="text-center py-10 border-2 border-dashed border-white/10 rounded-3xl">
-                        <p class="text-white/40 text-[10px] uppercase font-bold tracking-widest">Nenhum imóvel cadastrado.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            properties.forEach(prop => {
-                const card = document.createElement('div');
-                card.className = "relative p-5 rounded-[2rem] bg-white/5 border border-white/10 overflow-hidden shadow-inner group";
-                
-                const isConfirming = deleteConfirmations[prop.id];
-
-                card.innerHTML = `
-                    <button 
-                        onclick="handleDeleteClick(event, '${prop.id}')"
-                        class="absolute top-4 right-4 z-[100] h-12 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 border-2 border-white/30 cursor-pointer ${isConfirming ? 'bg-red-600 px-4 w-auto animate-pulse' : 'bg-black/50 w-12'}"
-                    >
-                        ${isConfirming ? '<span class="text-[9px] font-black text-white uppercase tracking-widest"><i class="fa-solid fa-check"></i> CONFIRMAR?</span>' : '<i class="fa-solid fa-trash-can text-white text-lg"></i>'}
-                    </button>
-
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-[9px] font-black text-white/60 uppercase tracking-widest">${prop.type}</span>
-                    </div>
-
-                    <div class="relative rounded-2xl overflow-hidden shadow-lg border border-white/5 cursor-pointer transition-opacity ${isConfirming ? 'opacity-40 grayscale' : 'opacity-100'}" onclick="openDetails('${prop.id}')">
-                        <img src="${prop.mainImage}" class="w-full h-52 object-cover transition-transform duration-1000 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent flex flex-col justify-end p-5">
-                            <p class="text-white text-base font-bold mb-3 tracking-wide">${prop.name}</p>
-                            <button class="w-full text-[10px] font-bold text-white bg-white/10 backdrop-blur-md py-3.5 rounded-xl border border-white/20 uppercase tracking-wider">VER DETALHES</button>
-                        </div>
-                    </div>
-                `;
-                list.appendChild(card);
-            });
-        }
-
-        // --- LÓGICA DE EXCLUSÃO ---
-        function handleDeleteClick(e, id) {
-            e.stopPropagation();
-            if (deleteConfirmations[id]) {
-                properties = properties.filter(p => p.id !== id);
-                delete deleteConfirmations[id];
-                localStorage.setItem('pavan_properties_v2', JSON.stringify(properties));
-                renderProperties();
-            } else {
-                deleteConfirmations[id] = true;
-                renderProperties();
-                setTimeout(() => {
-                    if (deleteConfirmations[id]) {
-                        delete deleteConfirmations[id];
-                        renderProperties();
-                    }
-                }, 3000);
-            }
-        }
-
-        // --- FORMULÁRIO ---
-        function toggleAddForm(show) {
-            const modal = document.getElementById('modal-add');
-            modal.style.display = show ? 'flex' : 'none';
-            if (!show) {
-                document.getElementById('property-form').reset();
-                tempImages = [];
-                tempVideo = null;
-                document.getElementById('photo-preview').innerHTML = 'Selecionar Fotos';
-            }
-        }
-
-        function selectType(type) {
-            currentType = type;
-            document.querySelectorAll('.type-btn').forEach(btn => {
-                if (btn.dataset.type === type) {
-                    btn.className = "type-btn py-3 rounded-xl text-[10px] font-black uppercase tracking-widest border border-premiumGold bg-premiumGold text-black transition-all";
-                } else {
-                    btn.className = "type-btn py-3 rounded-xl text-[10px] font-black uppercase tracking-widest border border-white/10 bg-white/5 text-white/40 transition-all";
-                }
-            });
-        }
-
-        // Handle Photo Inputs
-        document.getElementById('f-photos').addEventListener('change', function(e) {
-            const files = Array.from(e.target.files);
-            tempImages = [];
-            const preview = document.getElementById('photo-preview');
-            preview.innerHTML = '';
-            
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = (ev) => {
-                    tempImages.push(ev.target.result);
-                    const img = document.createElement('img');
-                    img.src = ev.target.result;
-                    img.className = "aspect-square object-cover rounded-lg border border-white/20";
-                    preview.appendChild(img);
-                }
-                reader.readAsDataURL(file);
-            });
-        });
-
-        document.getElementById('f-video').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (ev) => { tempVideo = ev.target.result; }
-                reader.readAsDataURL(file);
-            }
-        });
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('f-name').value;
-            if (tempImages.length === 0) return alert('Anexe pelo menos 1 foto.');
-
-            const newProp = {
-                id: Date.now().toString(),
-                type: currentType,
-                name: name,
-                mainImage: tempImages[0],
-                gallery: tempImages.slice(1),
-                video: tempVideo,
-                areaPrivativa: document.getElementById('f-areaP').value || '-',
-                areaTotal: document.getElementById('f-areaT').value || '-',
-                bedrooms: document.getElementById('f-bed').value || '0',
-                bathrooms: document.getElementById('f-bath').value || '0',
-                parking: document.getElementById('f-park').value || '0'
-            };
-
-            properties.unshift(newProp);
-            localStorage.setItem('pavan_properties_v2', JSON.stringify(properties));
-            toggleAddForm(false);
-            renderProperties();
-        }
-
-        // --- DETALHES ---
-        function openDetails(id) {
-            selectedProperty = properties.find(p => p.id === id);
-            const content = document.getElementById('details-content');
-            renderDetailsContent('details');
-            document.getElementById('modal-details').style.display = 'flex';
-        }
-
-        function closeDetails() {
-            document.getElementById('modal-details').style.display = 'none';
-        }
-
-        function renderDetailsContent(view) {
-            const p = selectedProperty;
-            const container = document.getElementById('details-content');
-            
-            let innerHTML = `
-                <button onclick="closeDetails()" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white z-10"><i class="fa-solid fa-xmark text-xl"></i></button>
-                <div class="mb-6 mt-4">
-                    <h2 class="text-premiumGold font-bold text-xl mb-1 uppercase tracking-wider">${p.name}</h2>
-                    <div class="flex items-center gap-2 text-white/40 text-[10px] uppercase tracking-widest font-medium"><i class="fa-solid fa-location-dot text-premiumGold"></i> Propriedade Selecionada</div>
-                </div>
-                <div class="flex p-1.5 bg-white/5 rounded-2xl mb-6 border border-white/5">
-                    <button onclick="renderDetailsContent('details')" class="flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${view === 'details' ? 'bg-premiumGold text-black' : 'text-white/40'}">Geral</button>
-                    <button onclick="renderDetailsContent('photos')" class="flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${view === 'photos' ? 'bg-premiumGold text-black' : 'text-white/40'}">Fotos & Vídeo</button>
-                </div>
-            `;
-
-            if (view === 'details') {
-                innerHTML += `
-                    <div class="animate-fade-in">
-                        <div class="grid grid-cols-2 gap-3 mb-4">
-                            <div class="bg-white/5 p-4 rounded-[1.5rem] border border-white/10 text-center">
-                                <span class="text-[9px] text-white/40 block mb-1 uppercase font-bold">Privativa</span>
-                                <span class="text-sm font-bold text-white">${p.areaPrivativa}</span>
-                            </div>
-                            <div class="bg-white/5 p-4 rounded-[1.5rem] border border-white/10 text-center">
-                                <span class="text-[9px] text-white/40 block mb-1 uppercase font-bold">Total</span>
-                                <span class="text-sm font-bold text-white">${p.areaTotal}</span>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-3 gap-3 mb-6">
-                            <div class="bg-white/5 p-4 rounded-[1.5rem] border border-white/10 text-center">
-                                <i class="fa-solid fa-bed text-premiumGold mb-2 block"></i>
-                                <span class="text-[9px] text-white/40 block mb-1 uppercase font-bold">Dorms</span>
-                                <span class="text-xs font-bold text-white">${p.bedrooms}</span>
-                            </div>
-                            <div class="bg-white/5 p-4 rounded-[1.5rem] border border-white/10 text-center">
-                                <i class="fa-solid fa-sink text-premiumGold mb-2 block"></i>
-                                <span class="text-[9px] text-white/40 block mb-1 uppercase font-bold">Banh.</span>
-                                <span class="text-xs font-bold text-white">${p.bathrooms}</span>
-                            </div>
-                            <div class="bg-white/5 p-4 rounded-[1.5rem] border border-white/10 text-center">
-                                <i class="fa-solid fa-car text-premiumGold mb-2 block"></i>
-                                <span class="text-[9px] text-white/40 block mb-1 uppercase font-bold">Vagas</span>
-                                <span class="text-xs font-bold text-white">${p.parking}</span>
-                            </div>
-                        </div>
-                        <img src="${p.mainImage}" class="w-full rounded-2xl border border-white/10">
-                    </div>
-                `;
-            } else {
-                innerHTML += `
-                    <div class="animate-fade-in space-y-8">
-                        ${p.video ? `
-                            <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/40 aspect-video">
-                                <video src="${p.video}" class="w-full h-full object-cover" controls loop muted playsInline></video>
-                                <div class="absolute top-4 left-4 bg-premiumGold text-black text-[9px] font-black px-3 py-1 rounded-full shadow-lg z-10 pointer-events-none uppercase">Tour Vídeo</div>
-                            </div>
-                        ` : ''}
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="relative rounded-2xl overflow-hidden shadow-xl border border-white/10 aspect-square" onclick="showFullscreen('${p.mainImage}')">
-                                <img src="${p.mainImage}" class="w-full h-full object-cover">
-                            </div>
-                            ${p.gallery.map(img => `
-                                <div class="relative rounded-2xl overflow-hidden shadow-xl border border-white/10 aspect-square" onclick="showFullscreen('${img}')">
-                                    <img src="${img}" class="w-full h-full object-cover">
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
-            innerHTML += `
-                <a href="https://api.whatsapp.com/send?phone=5548999862981&text=Gostaria de informações sobre: ${p.name}" target="_blank" class="w-full mt-8 py-5 bg-premiumGold text-black font-black rounded-2xl flex items-center justify-center gap-3 shadow-xl uppercase tracking-[0.2em] text-[10px]">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> SOLICITAR APRESENTAÇÃO
-                </a>
-            `;
-            container.innerHTML = innerHTML;
-        }
-
-        function showFullscreen(url) {
-            const f = document.getElementById('fullscreen-view');
-            document.getElementById('fullscreen-img').src = url;
-            f.classList.remove('hidden');
-            f.classList.add('flex');
-        }
-
-        // --- VCARD ---
-        function saveContact() {
-            const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Ademilton Pavan\nORG:Pavan\nTITLE:Corretor de Imóveis CRECI-SC 72451\nTEL;TYPE=CELL:+5548999862981\nEMAIL:apavaneng@gmail.com\nEND:VCARD`;
-            const blob = new Blob([vCardData], { type: 'text/vcard' });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'Ademilton_Pavan.vcf');
-            link.click();
-        }
-
-        // --- RESET ---
-        function resetApp() {
-            if (confirm("Isso apagará todos os imóveis e restaurará o padrão. Continuar?")) {
-                localStorage.removeItem('pavan_properties_v2');
-                location.reload();
-            }
-        }
-    </script>
 </body>
 </html>
-
-
-
